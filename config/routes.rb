@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {registrations: 'registrations'}
   resources :clients
   get '/auth/facebook/callback' => 'sessions#create'
   root to: "application#home"
