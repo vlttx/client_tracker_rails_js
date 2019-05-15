@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :invoices
   devise_for :users, :controllers => {registrations: 'registrations'}
   resources :clients
   get '/auth/facebook/callback' => 'sessions#create'
