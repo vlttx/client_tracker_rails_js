@@ -1,5 +1,11 @@
 <h1>Your Favorite Client Tracker!</h1>
 
-<% if !user_signed_in?%>
-	<h2> Hello, <%=current_user,email.split("@")[0] %> </h2>
-	<% end %> 
+
+<% if session[:user_id] %>
+  <h1>Welcome, <%= @user.name %> !</h1>
+<% else %>
+  <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+<% end %>
+
+
+
