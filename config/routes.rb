@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#create'
   root to: "application#home"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :clients do
+  	resources :projects
+  end
 end
