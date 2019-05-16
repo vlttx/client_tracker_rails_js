@@ -1,7 +1,10 @@
-<ol>
+
+
+<h2> Your Project List: </h2>
+	<ol>
 	<% @projects.each do |p| %>
 	<li>
-		<%= p.name, p.type %>
+		<%= link_to p.title, project_path(p) %>
 	</li>
 	<%end%>
 </ol>
