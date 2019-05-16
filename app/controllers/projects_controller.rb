@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
 	def index
 		@projects = current_user.projects
+		byebug
 	end
 
 	def show
@@ -11,6 +12,8 @@ class ProjectsController < ApplicationController
 		@project = Project.new
 		@project.type = params[:type]
 		@project.title = params[:title]
+		@projects.deadline = params[:deadline]
+		@project.save
 
 	end
 
