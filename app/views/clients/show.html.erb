@@ -10,7 +10,7 @@
 <h4>Address: <a href="https://www.google.com/maps/place/<%=@client.address%>"><%=@client.address%></a></h4>
 <h4>Email: <a href = "mailto: <%=@client.email%>"><%=@client.email%></a></h4>
 <h4>Website: <a href="https://www.<%=@client.website%>"><%=@client.website%></a></h4>
-<h4>Projects: <%=@client.projects%></h4>
+<h4>Projects: <%=collection_select(:project, :client_id, Client.all, :id, :title, prompt: true%></h4>
 </div>
 </div>
 <!-- <br></br> -->

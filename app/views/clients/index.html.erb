@@ -1,1 +1,8 @@
-<h1>condition and then all clients</h1>
+<h1>Your Clients:</h1>
+<ol>
+	<% @clients.each do |c| %>
+	<li>
+		<%= link_to c.business_name, client_path(c) %>
+	</li>
+	<%end%>
+</ol>

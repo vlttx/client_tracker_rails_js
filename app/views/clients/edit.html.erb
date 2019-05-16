@@ -1,1 +1,12 @@
 <h2>Edit your existing client record: </h2>
+<%= form_for (@client) do |c| %>
+	<label> Client Name: </label><br>
+	<%=  c.text_field :business_name %><br>
+	<label> Address: </label><br>
+	<%=  c.text_field :address %><br>
+	<label> Website: </label><br>
+	<%=  c.url_field :website %><br>
+	<label> Email: </label><br>
+	<%=  c.email_field :email %><br>
+	<%= c.submit %>
+<%end%>
