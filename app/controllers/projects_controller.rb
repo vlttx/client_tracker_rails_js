@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
 	def index
 		@projects = current_user.projects
-		byebug
 	end
 
 	def show
