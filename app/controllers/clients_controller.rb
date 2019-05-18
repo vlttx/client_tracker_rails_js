@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-	before_action :set_user
+	# before_action :set_user
 
 
 	def index
@@ -17,9 +17,10 @@ class ClientsController < ApplicationController
 
 	def create
 		@client = Client.new(client_params)
+		byebug
 		@client.user = current_user
 		@client.save
-
+		redirect_to client_path(@client)
 	end
 
 	def update
@@ -34,13 +35,13 @@ class ClientsController < ApplicationController
 		params.require(:client).permit!
 	end
 
-	def set_user
-		if current_user
-			@user = current_user
-		else
-			redirect_to new_user_registration
-		end
-	end
+	# def set_user
+	# 	if current_user
+	# 		@user = current_user
+	# 	else
+	# 		redirect_to new_user_registration
+	# 	end
+	# end
 
 
 end
