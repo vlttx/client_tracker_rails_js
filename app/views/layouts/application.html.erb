@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head <%= javascript_include_tag "application" %>
+<%= csrf_meta_tag %>>
     <title>ClientTrackerRails</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +11,7 @@
     <style>
 body {
   background-image: url('/images/dark-honeycomb.png');
-  color:  red;
+  color:  white;
 }
  </style>
 
