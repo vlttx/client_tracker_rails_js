@@ -7,7 +7,7 @@
 	<label> Website: </label><br>
 	<%=  c.url_field :website %><br>
 	<label> Email: </label><br>
-	<%=  c.email_field c:email %><br>
+	<%=  c.email_field :email %><br>
 	<%= c.submit %>
 <%end%>
   <%= link_to "Delete", @client, method: :delete, data: { confirm: "Are you sure you want to delete this client?" } %>
