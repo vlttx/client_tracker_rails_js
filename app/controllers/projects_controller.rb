@@ -70,7 +70,7 @@ class ProjectsController < ApplicationController
 	private
 
 	def project_params
-		params.require(:project).permit(:description, :client_id)
+		params.require(:project).permit(:description, :client_id, invoice_ids: [])
 	end
 
 	def set_project

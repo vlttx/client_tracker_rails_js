@@ -1,12 +1,22 @@
 class InvoicesController < ApplicationController
+
+		def new
+ 		# check if nested and its a proper id
+ 		@project = Project.find_by_id(params[:project_id].to_i)
+		if params[:project_id] && @project
+ 		@invoice = Invoice.new(project_id: params[:project_id].to_i)
+ 		else
+ 		#unnested
+ 		@invoice = Invoice.new
+ 	end
+ 	end
+
 	def index
-		@invoices = current_user.invoices
-
-	end
-
-	def new
-		byebug
-		@invoice = Invoice.new
+ 		if params[:project_id]
+ 			@invoices = Project.find_by_id(params[:project_id].to_i).invoices
+ 		else
+ 		@invoices = current_user.invoices
+    end
 	end
 
 
@@ -16,7 +26,7 @@ class InvoicesController < ApplicationController
 
 	
 	def edit
-		
+		set_invoice
 	end
 
 	def create
@@ -63,34 +73,11 @@ end
 
 
 end
-
-
-# def new
-# 		# check if nested and its a proper id
-# 		if params[:client_id] && @client = Client.find_by_id(params[:client_id].to_i)
-# 		@project = Project.new(client_id: params[:client_id].to_i)
-# 		else
-# 		#unnested
-# 		@project = Project.new
-# 	end
-# 	end
-
-	
-# 	def index
-# 		if params[:client_id]
-# 			@projects = Client.find_by_id(params[:client_id].to_i).projects
-# 		else
-# 		@projects = current_user.projects
-# 	end
-# 	end
+ 	
 
 # 	def show
 # 		@project = Project.find(params[:id])
 # 	end
-
-# 	def update
-# 	end
-
 # 	def create
 # 		@project = current_user.projects.build(project_params)
 # 		if @project.save
@@ -131,18 +118,3 @@ end
 # 	end
 # end
 
-
-# def update 
-# 	 	set_client
-#     	if @client.update(client_params)
-#       	redirect_to clients_path
-#      else 
-#       set_client
-#       render :edit
-#     end
-#   end
-
-# 	 def destroy
-# 	 	set_client
-# 	 	@client.destroy
-# 	 	redirect_to clients_path
