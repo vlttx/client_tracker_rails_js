@@ -1,4 +1,4 @@
-<%= form_for (@client) do |c| %>
+<%= form_for(@client) do |c| %>
 	<label> Client Name: </label><br>
 	<%=  c.text_field :business_name %><br>
 	<label> Address: </label><br>
@@ -7,7 +7,5 @@
 	<%=  c.url_field :website %><br>
 	<label> Email: </label><br>
 	<%=  c.email_field :email %><br>
-	<!-- <label> New project: </label><br>
-	<%=  c.text_field :project %><br> -->
 	<%= c.submit %>
 <%end%>
