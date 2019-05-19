@@ -7,12 +7,23 @@ class ClientsController < ApplicationController
 
 	end
 
+	def new
+		@client = Client.new
+	end
+
+
 	def show
 		@client = Client.find(params[:id])
 	end
 
-	def new
-		@client = Client.new
+	
+	def edit
+		@client = current_user.clients.find_by_id(params[:id])
+		if @client.update(params.permit(:business_name, :address, :email, :website))
+      	redirect_to edit_client_path(@client)
+     else 
+      flash[:error] = "Client not found."
+    end
 	end
 
 	def create
@@ -22,11 +33,20 @@ class ClientsController < ApplicationController
 		redirect_to client_path(@client)
 	end
 
-	def update
-		@client = Client.find(params[:id])
-		@client.update(client_params)
-		redirect_to client_path(@client)
-	end
+	# def update
+	# 	@client = Client.find(params[:id])
+	# 	@client.update(client_params)
+	# 	redirect_to client_path(@client)
+	# end
+
+	 def update 
+    	if @client.update(client_params)
+      	redirect_to clients_path
+     else 
+      set_client
+      render :edit
+    end
+  end
 
 	 def destroy
 	 	@client = current_user.clients.find_by(id: params[:id])
@@ -47,7 +67,7 @@ class ClientsController < ApplicationController
 	def set_client
     @client = current_user.clients.find_by(id: params[:id])
     if @client.nil? 
-      flash[:error] = "Appointment not found."
+      flash[:error] = "Client not found."
       redirect_to clients_path
     end
   end

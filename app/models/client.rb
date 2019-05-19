@@ -1,5 +1,6 @@
 class Client < ApplicationRecord
 	belongs_to :user
-	belongs_to :project, optional: true
+	has_many :projects
+	has_many :invoices, through :projects
 	validates :business_name, :email, :website, :address, presence: true
 end

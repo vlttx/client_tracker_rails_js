@@ -1,4 +1,10 @@
 class ProjectsController < ApplicationController
+
+	def new
+		@project = Project.new
+	end
+
+	
 	def index
 		@projects = current_user.projects
 	end
@@ -16,8 +22,6 @@ class ProjectsController < ApplicationController
 
 	end
 
-	def new
-		@project = Project.new
-	end
+	
 
 end

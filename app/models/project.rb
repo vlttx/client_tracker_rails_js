@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
-	has_many :clients
-	has_many :users, :through => :clients
+	belongs_to :client
+	has_many :invoices
+	has_many :users, :through => :invoices
 	validates :type, presence: true
 end

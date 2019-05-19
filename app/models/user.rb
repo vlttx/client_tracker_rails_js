@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password
 	has_many :clients
 	has_many :invoices
-	has_many :projects, through: :clients
+	has_many :projects, through: :invoices
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   validates :name, presence: true

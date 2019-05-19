@@ -13,4 +13,10 @@ Rails.application.routes.draw do
   resources :users do 
     resources :clients 
   end
+  resources :invoices do 
+    resources :users
+  end
+  resources :projects do 
+    resources :invoices
+  end
 end
