@@ -16,15 +16,10 @@ class ClientsController < ApplicationController
 	end
 
 	def create
-		@user = current_user
-		@client = @user.build(client_params)
+		@client = Client.new(client_params)
+		@client.user = current_user
 		@client.save
 		redirect_to client_path(@client)
-		# @client = Client.new(client_params)
-		# byebug
-		# @client.user = current_user
-		# @client.save
-		# redirect_to client_path(@client)
 	end
 
 	def update
@@ -36,7 +31,7 @@ class ClientsController < ApplicationController
 	private
 
 	def client_params
-		params.require(:client).permit!
+		params.require(:client).permit(:business_name, :address, :email, :website)
 	end
 
 	# def set_user
