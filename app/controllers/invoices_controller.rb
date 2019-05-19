@@ -13,7 +13,8 @@ class InvoicesController < ApplicationController
 
 	def index
  		if params[:project_id]
- 			@invoices = Project.find_by_id(params[:project_id].to_i).invoices
+ 			@project = Project.find_by_id(params[:project_id].to_i)
+ 			@invoices = @project.invoices
  		else
  		@invoices = current_user.invoices
     end

@@ -1,2 +1,6 @@
+
+<%if params[:project_id]%>
 <h3>Enter invoice details for project "<%=@project.description%>": </h3>
+<%else%>
 <%= render 'form' %>
+<%end%>
