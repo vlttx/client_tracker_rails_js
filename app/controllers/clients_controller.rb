@@ -1,7 +1,5 @@
 class ClientsController < ApplicationController
-	# before_action :set_user
-
-
+	
 	def index
 		@clients = current_user.clients
 
@@ -74,7 +72,7 @@ class ClientsController < ApplicationController
 	private
 
 	def client_params
-		params.require(:client).permit(:business_name, :address, :email, :website)
+		params.require(:client).permit(:business_name, :address, :email, :website, project_ids: [])
 	end
 
 	# def set_client

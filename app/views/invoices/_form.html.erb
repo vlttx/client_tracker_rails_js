@@ -1,0 +1,30 @@
+<%= form_for(@invoice) do |c| %>
+	<label> Service: </label><br>
+	<%=  c.text_field :service %><br>
+	<label> Rate: </label><br>
+	<%=  c.text_field :rate %><br>
+	<label> Amount: </label><br>
+	<%=  c.number_field :amount %><br>
+	<label> Total: </label><br>
+	<%=  c.number_field :total %><br>
+	<br><br>
+
+  	<%= c.label :project_id, "Select a Project" %>
+  	<%= c.collection_select :project_id, Project.all, :id, :description, prompt: true %>
+  	<br><br>
+
+  	<% if !params[:project_id] %>
+    <h4>Or add a new project:</h4>
+
+    <%= f.fields_for :project do |v|%>
+        <%= v.label :description %>
+        <%= v.text_field :description %>
+    <% end %>
+  <% end %>
+
+  <br><br>
+
+	<%= c.submit %>
+<%end%>
+
+

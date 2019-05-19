@@ -1,8 +1,7 @@
 <h4> Enter your new project: </h4>
 <%= form_for(@project) do |p| %>
 	<label> Project description: </label><br>
+	<%= p.hidden_field :client_id %><br>
 	<%=  p.text_field :description %><br>
 	<%= p.submit %>
 <%end%>
-  <%= link_to "Delete", @project, method: :delete, data: { confirm: "Are you sure you want to delete this project" } %>
-</p>

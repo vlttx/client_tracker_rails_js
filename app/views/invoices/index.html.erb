@@ -1,1 +1,14 @@
-Your invoices:
+<h1>Your Invoices:</h1>
+<% if @invoices.count != 0%>
+
+<ol>
+	<% @invoices.each do |i| %>
+	<h1><li>
+		<%= link_to i.project_id.description, invoice_path(i) %>
+	</li></h1>
+	<%end%>
+		</ol>
+		To add a new invoice click <%=link_to "HERE", new_invoice_path%>.
+<%else %>
+	You currently have no invoices. To add a new invoice click <%=link_to "HERE", new_invoice_path%>.
+<%end%>
