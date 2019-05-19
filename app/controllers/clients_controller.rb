@@ -16,11 +16,15 @@ class ClientsController < ApplicationController
 	end
 
 	def create
-		@client = Client.new(client_params)
-		byebug
-		@client.user = current_user
+		@user = current_user
+		@client = @user.build(client_params)
 		@client.save
 		redirect_to client_path(@client)
+		# @client = Client.new(client_params)
+		# byebug
+		# @client.user = current_user
+		# @client.save
+		# redirect_to client_path(@client)
 	end
 
 	def update
