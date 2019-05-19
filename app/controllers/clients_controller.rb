@@ -77,13 +77,13 @@ class ClientsController < ApplicationController
 		params.require(:client).permit(:business_name, :address, :email, :website)
 	end
 
-	def set_client
-    @client = current_user.clients.find_by(id: params[:id])
-    if @client.nil? 
-      flash[:error] = "Client not found."
-      redirect_to clients_path
-    end
-  end
+	# def set_client
+ #    @client = current_user.clients.find_by(id: params[:id])
+ #    if @client.nil? 
+ #      flash[:error] = "Client not found."
+ #      redirect_to clients_path
+ #    end
+ #  end
 
 	def set_client
 	@client = Client.find_by(id: params[:id])
