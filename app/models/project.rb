@@ -1,4 +1,4 @@
 class Project < ApplicationRecord
-	belongs_to :client
-	has_many :users, :through => :invoices
+	has_many :clients
+	has_many :users, :through => :clients
 end
