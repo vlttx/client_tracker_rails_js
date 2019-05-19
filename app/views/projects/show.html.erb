@@ -1,3 +1,6 @@
 
 
-<%=@project.description%> for <%=@project.client.business_name %>
+<h3><%=@project.description%> for <%=@project.client.business_name %> was added to your project list.</h3>
+
+<h4><%= link_to "Edit Project Information", edit_project_path(@project) %></h4>
+<h4><%= link_to "Delete Project Record", @project, method: :delete,  data: { confirm: "Are you sure you want to delete this project?" }  %></h4>

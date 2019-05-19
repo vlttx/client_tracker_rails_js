@@ -1,10 +1,22 @@
 
-
-<h2> Your Project List: </h2>
+<% if params[:client_id] %>
+<h2> Your projects for <%=@client.business_name%>: </h2>
 	<ol>
 	<% @projects.each do |p| %>
 	<li>
-		<%= link_to p.description, project_path(p) %>
+		<%= link_to p.description, project_path(p) %> for <%= p.client.business_name%>
 	</li>
 	<%end%>
 </ol>
+
+
+<%else%>
+<h2> All of your projects: </h2>
+	<ol>
+	<% @projects.each do |p| %>
+	<li>
+		<%= link_to p.description, project_path(p) %> for <%= p.client.business_name%>
+	</li>
+	<%end%>
+</ol>
+<%end%>

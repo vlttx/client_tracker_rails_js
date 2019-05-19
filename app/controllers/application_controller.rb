@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
+	 before_action :authenticate_user!
 	  protect_from_forgery with: :exception
-	  before_action :authenticate_user!
 	  helper_method :current_user, :user_signed_in?, :user_session, :logged_in?, :destroy_user_session_path
 	def home
 	end

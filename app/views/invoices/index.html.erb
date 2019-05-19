@@ -4,7 +4,7 @@
 <ol>
 	<% @invoices.each do |i| %>
 	<h1><li>
-		<%= link_to i.project_id.description, invoice_path(i) %>
+		<%= link_to i.service, invoice_path(i) %>
 	</li></h1>
 	<%end%>
 		</ol>

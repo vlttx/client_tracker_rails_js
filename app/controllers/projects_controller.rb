@@ -13,18 +13,30 @@ class ProjectsController < ApplicationController
 	
 	def index
 		if params[:client_id]
-			@projects = Client.find_by_id(params[:client_id].to_i).projects
+			@client = Client.find_by_id(params[:client_id].to_i)
+			@projects = @client.projects
 		else
 		@projects = current_user.projects
 	end
+	end
+
+	def edit
+		set_project
 	end
 
 	def show
 		@project = Project.find(params[:id])
 	end
 
-	def update
-	end
+	def update 
+	 	set_project
+    	if @project.update(project_params)
+      	redirect_to projects_path
+     else 
+      set_project
+      render :edit
+    end
+  end
 
 	def create
 		@project = current_user.projects.build(project_params)
@@ -61,8 +73,8 @@ class ProjectsController < ApplicationController
 		params.require(:project).permit(:description, :client_id)
 	end
 
-	def set_client
-		@client = Client.find_by(id: params[:client_id].to_i)
+	def set_project
+		@project = Project.find_by(id: params[:id].to_i)
 	end
 end
 
