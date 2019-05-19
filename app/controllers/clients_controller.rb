@@ -13,17 +13,20 @@ class ClientsController < ApplicationController
 
 
 	def show
-		@client = Client.find(params[:id])
+		set_client
+		# @client = Client.find(params[:id])
 	end
 
 	
 	def edit
-		@client = current_user.clients.find_by_id(params[:id])
-		if @client.update(params.permit(:business_name, :address, :email, :website))
-      	redirect_to edit_client_path(@client)
-     else 
-      flash[:error] = "Client not found."
-    end
+		set_client
+		# redirect_to clients_path
+		# @client = current_user.clients.find_by_id(params[:id])
+		# if @client.update(params.permit(:business_name, :address, :email, :website))
+  #     	redirect_to edit_client_path(@client)
+  #    else 
+  #     flash[:error] = "Client not found."
+  #   end
 	end
 
 	def create
@@ -31,6 +34,12 @@ class ClientsController < ApplicationController
 		@client.user = current_user
 		@client.save
 		redirect_to client_path(@client)
+		# current_user.clients.build(client_params)
+		# if @client.save
+		# redirect_to client_path(@client)
+		# else
+		# render :new
+		# @client.user_id = current_user.id equals @client.user = current user
 	end
 
 	# def update
@@ -40,6 +49,7 @@ class ClientsController < ApplicationController
 	# end
 
 	 def update 
+	 	set_client
     	if @client.update(client_params)
       	redirect_to clients_path
      else 
@@ -49,13 +59,16 @@ class ClientsController < ApplicationController
   end
 
 	 def destroy
-	 	@client = current_user.clients.find_by(id: params[:id])
-    	if @client.nil? 
-      	flash[:error] = "Client not found."
-      	redirect_to clients_path
-      else
-      	@client.destroy
-    end
+	 	set_client
+	 	@client.destroy
+	 	redirect_to clients_path
+	 	# @client = current_user.clients.find_by(id: params[:id])
+   #  	if @client.nil? 
+   #    	flash[:error] = "Client not found."
+   #    	redirect_to clients_path
+   #    else
+   #    	@client.destroy
+   #  end
   end
 
 	private
@@ -72,13 +85,12 @@ class ClientsController < ApplicationController
     end
   end
 
-	# def set_user
-	# 	if current_user
-	# 		@user = current_user
-	# 	else
-	# 		redirect_to new_user_registration
-	# 	end
-	# end
+	def set_client
+	@client = Client.find_by(id: params[:id])
+		if !@client
+			redirect_to clients_path
+	end
+	end
 
 
 end

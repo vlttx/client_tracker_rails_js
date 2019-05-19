@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_secure_password
 	has_many :clients
 	has_many :invoices
 	has_many :projects, through: :invoices
