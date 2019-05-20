@@ -1,24 +1,5 @@
-# README
+CLIENT_TRACKER DESCRIPTION ClientTracker is a Rails-based web app that allows users to keep track of their clients, related projects and invoices.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+INSTALL AND USAGE INSTRUCTIONS To use ClientTracker, fork and clone the repository. CD to the local repository files, run bundle install, and then run rails s from the terminal. In your web browser, navigate to the appropriate localhost, and sign up as usual or through Facebook.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+LINK TO MIT LICENSE This is available as open source under the terms of the MIT License.
