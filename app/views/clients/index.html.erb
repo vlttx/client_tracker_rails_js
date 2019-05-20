@@ -1,15 +1,15 @@
 
 <h1>Your Clients:</h1>
 <% if @clients.count != 0%>
-
 <ol>
 	<% @clients.each do |c| %>
-	<h1><li>
+	<h3><li>
 		<%= link_to c.business_name, client_path(c) %>
-	</li></h1>
+	</li></h3>
 	<%end%>
-		</ol>
-		To add a new client click <%=link_to "HERE", new_client_path%>.
+</ol>
+	
+	<h4>To add a new client click <%=link_to "HERE", new_client_path%>.</h4>
 <%else %>
-	You currently have no clients. To add a new client click <%=link_to "HERE", new_client_path%>.
+	<h3 style="color:red">You currently have no clients. To add a new client click <%=link_to "HERE", new_client_path%>.</h3>
 <%end%>

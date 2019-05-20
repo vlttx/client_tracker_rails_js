@@ -25,7 +25,8 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-		@project = Project.find(params[:id])
+		@project = Project.find(params[:id].to_i)
+		@client = Client.find(@project.client_id)
 	end
 
 	def update 
@@ -42,30 +43,10 @@ class ProjectsController < ApplicationController
 		@project = current_user.projects.build(project_params)
 		if @project.save
 			redirect_to project_path(@project)
-			else
+		else
 			render :new
 		end
-			end
-
-		#  redirect_to user_projects_path
-		# @project = Project.new(project_params)
-		# @project.client_id = @client.id
-		# @project.save
-		# redirect_to client_projects_path
-
-
-		# @client = Client.new(client_params)
-		# @client.user = current_user
-		# @client.save
-		# redirect_to client_path(@client)
-		# current_user.clients.build(client_params)
-		# if @client.save
-		# redirect_to client_path(@client)
-		# else
-		# render :new
-		# @client.user_id = current_user.id equals @client.user = current user
-
-
+	end
 
 	private
 
@@ -77,19 +58,3 @@ class ProjectsController < ApplicationController
 		@project = Project.find_by(id: params[:id].to_i)
 	end
 end
-
-
-# def update 
-# 	 	set_client
-#     	if @client.update(client_params)
-#       	redirect_to clients_path
-#      else 
-#       set_client
-#       render :edit
-#     end
-#   end
-
-# 	 def destroy
-# 	 	set_client
-# 	 	@client.destroy
-# 	 	redirect_to clients_path

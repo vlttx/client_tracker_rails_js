@@ -1,28 +1,18 @@
 
 <% if params[:project_id] && @invoices.count != 0%>
-<h1>Your Invoices for Project "<%=@project.description%>":</h1>
+	<h2>Your Invoices for Project "<%=@project.description%>":</h2>
+		<%=render 'index'%>
+<br>
+	<h4>To add a new invoice for this project, click <%=link_to "HERE", new_project_invoice_path(@project)%>. <br>
+        To create an invoice for another project, click <%=link_to "HERE", new_invoice_path%>.</h4>
 
-<ol>
-	<% @invoices.each do |i| %>
-	<h1><li>
-		<%= link_to i.service, invoice_path(i) %>
-	</li></h1>
-	<%end%>
-		</ol>
-To add a new invoice for this project, click <%=link_to "HERE", new_project_invoice_path(@project)%>. <br>
-To create an invoice for another project, click <%=link_to "HERE", new_invoice_path%>.
-<%elsif params[:project_id] && @invoices.count == 0% %>
-	You currently have no invoices for this project. To add a new invoice for this project, click <%=link_to "HERE", new_project_invoice_path(@project)%>.
-	To create an invoice for another project, click <%=link_to "HERE", new_invoice_path%>.
-	<%elsif @invoices && @invoices.count!= 0 %>
-	<ol>
-	<% @invoices.each do |i| %>
-	<h1><li>
-		<%= link_to i.service, invoice_path(i) %>
-	</li></h1>
-	<%end%>
-		</ol>
-		To create a new invoice, click <%=link_to "HERE", new_invoice_path%>.
-	<%else%>
-	You currently have no invoices. To create a new invoice, click <%=link_to "HERE", new_invoice_path%>.
+<% elsif params[:project_id] && @invoices.count == 0 %>
+	<h4 style="color:red">You currently have no invoices for this project. To add a new invoice for this project, click <%=link_to "HERE", new_project_invoice_path(@project)%>.
+	To create an invoice for another project, click <%=link_to "HERE", new_invoice_path%>.</h4>
+
+<%elsif @invoices && @invoices.count != 0 %>
+	<%=render 'index'%>
+	<h4>To create a new invoice, click <%=link_to "HERE", new_invoice_path%>.</h4>
+<%else%>
+	<h4 style="color:red">You currently have no invoices. To create a new invoice, click <%=link_to "HERE", new_invoice_path%>.</h4>
 <%end%>

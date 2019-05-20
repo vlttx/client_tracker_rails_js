@@ -1,0 +1,7 @@
+<ol>
+	<% @invoices.each do |i| %>
+	<h3><li>
+		<%= link_to i.service, invoice_path(i) %>
+	</li></h3>
+	<%end%>
+		</ol>

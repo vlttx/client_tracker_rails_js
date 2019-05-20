@@ -7,13 +7,11 @@ class ClientsController < ApplicationController
 
 	def new
 		@client = Client.new
-		@project = @client.projects.build #making it available for the nested form
 	end
 
 
 	def show
 		set_client
-		@project = @client.projects.build #making it available for the nested form
 	end
 
 	
@@ -37,11 +35,11 @@ class ClientsController < ApplicationController
 	 def update 
 	 	set_client
     	if @client.update(client_params)
-      	redirect_to clients_path
-     else 
-      set_client
-      render :edit
-     end
+      	   redirect_to clients_path
+        else 
+          set_client
+          render :edit
+         end
   	end
 
 	 def destroy
@@ -53,25 +51,17 @@ class ClientsController < ApplicationController
 	private
 
 	def client_params
-		params.require(:client).permit(:business_name, :address, :email, :website, project_attributes: [])
+		params.require(:client).permit(:business_name, :address, :email, :website)
 	end
 
 
 	def set_client
-	@client = Client.find_by(id: params[:id])
+		@client = Client.find_by(id: params[:id])
 		if !@client
 			redirect_to clients_path
-	end
+		end
 	end
 
 
 end
 
-
-# def set_client
- #    @client = current_user.clients.find_by(id: params[:id])
- #    if @client.nil? 
- #      flash[:error] = "Client not found."
- #      redirect_to clients_path
- #    end
- #  end

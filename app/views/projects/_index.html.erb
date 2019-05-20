@@ -1,0 +1,7 @@
+<ol>
+	<% @projects.each do |p| %>
+	<li>
+		<%= link_to p.description, project_path(p) %> for <%= p.client.business_name%>
+	</li>
+	<%end%>
+</ol>
