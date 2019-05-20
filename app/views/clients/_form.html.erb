@@ -1,18 +1,22 @@
 <%= form_for(@client) do |c| %>
+<%= render partial: 'layouts/errors', locals: {object: @client} if @client.errors.count != 0 %>
 	<label> Client Name: </label><br>
-	<%=  c.text_field :business_name %><br>
+	<%=  c.text_field :business_name,  :placeholder=>"Required" %><br>
 	<label> Address: </label><br>
-	<%=  c.text_field :address %><br>
+	<%=  c.text_field :address, :placeholder=>"Enter address" %><br>
 	<label> Website: </label><br>
-	<%=  c.url_field :website %><br>
+	<%=  c.text_field :website, :placeholder=>"Enter website"%><br>
 	<label> Email: </label><br>
-	<%=  c.email_field :email %><br>
+	<%=  c.email_field :email, :placeholder=>"Enter email" %><br>
 	<br><br>
 	<%= c.label :project_id, "Select a Project" %>
   	<%= c.collection_select :project_id, Project.all, :id, :description, prompt: true %>
   	<br><br>
+	<label> Or add new project: </label><br>
+	<%= c.fields_for :projects do |pr_d| %>
+	<%= pr_d.text_field :description, :placeholder=>"Project description" %>
+	<%end%>
 
-      <% end %>
 
       <br>
       <br>

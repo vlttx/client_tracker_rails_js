@@ -8,6 +8,7 @@ class InvoicesController < ApplicationController
  		else
  		#unnested
  		@invoice = Invoice.new
+ 		@invoice.build_project
  	end
  	end
 
@@ -57,7 +58,7 @@ class InvoicesController < ApplicationController
 	private
 
 	def invoice_params
-		params.require(:invoice).permit(:service, :rate, :amount, :total, :project_id, :user_id)
+		params.require(:invoice).permit(:service, :rate, :amount, :total, :user_id, :project_id)
 	end
 
 	def set_invoice
@@ -119,3 +120,9 @@ end
 # 	end
 # end
 
+# if params[:invoice][:project_attributes]
+#  			@invoice = Invoice.new(invoice_params)
+#  			@project = Project.new
+#  			@invoice.project_id = @project.id
+#  			@invoice.save
+#  		else

@@ -7,45 +7,33 @@ class ClientsController < ApplicationController
 
 	def new
 		@client = Client.new
+		@project = @client.projects.build #making it available for the nested form
 	end
 
 
 	def show
 		set_client
-		@project = @client.project.build #making it available for the nested form
-	end
+		@project = @client.projects.build #making it available for the nested form
 	end
 
 	
 	def edit
 		set_client
-		# redirect_to clients_path
-		# @client = current_user.clients.find_by_id(params[:id])
-		# if @client.update(params.permit(:business_name, :address, :email, :website))
-  #     	redirect_to edit_client_path(@client)
-  #    else 
-  #     flash[:error] = "Client not found."
-  #   end
 	end
 
 	def create
+		byebug
 		@client = Client.new(client_params)
 		@client.user = current_user
-		@client.save
-		redirect_to client_path(@client)
-		# current_user.clients.build(client_params)
-		# if @client.save
-		# redirect_to client_path(@client)
-		# else
-		# render :new
-		# @client.user_id = current_user.id equals @client.user = current user
+		if @client.save
+				redirect_to client_path(@client)
+		elsif 
+			@client.projects.build
+			render :new
+		else
+			redirect_to new_client_path
+		end
 	end
-
-	# def update
-	# 	@client = Client.find(params[:id])
-	# 	@client.update(client_params)
-	# 	redirect_to client_path(@client)
-	# end
 
 	 def update 
 	 	set_client
@@ -54,35 +42,21 @@ class ClientsController < ApplicationController
      else 
       set_client
       render :edit
-    end
-  end
+     end
+  	end
 
 	 def destroy
 	 	set_client
 	 	@client.destroy
 	 	redirect_to clients_path
-	 	# @client = current_user.clients.find_by(id: params[:id])
-   #  	if @client.nil? 
-   #    	flash[:error] = "Client not found."
-   #    	redirect_to clients_path
-   #    else
-   #    	@client.destroy
-   #  end
-  end
+  	end
 
 	private
 
 	def client_params
-		params.require(:client).permit(:business_name, :address, :email, :website, project_ids: [])
+		params.require(:client).permit(:business_name, :address, :email, :website, project_attributes: [])
 	end
 
-	# def set_client
- #    @client = current_user.clients.find_by(id: params[:id])
- #    if @client.nil? 
- #      flash[:error] = "Client not found."
- #      redirect_to clients_path
- #    end
- #  end
 
 	def set_client
 	@client = Client.find_by(id: params[:id])
@@ -93,3 +67,12 @@ class ClientsController < ApplicationController
 
 
 end
+
+
+# def set_client
+ #    @client = current_user.clients.find_by(id: params[:id])
+ #    if @client.nil? 
+ #      flash[:error] = "Client not found."
+ #      redirect_to clients_path
+ #    end
+ #  end
