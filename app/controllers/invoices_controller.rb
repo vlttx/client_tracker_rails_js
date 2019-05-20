@@ -34,8 +34,11 @@ class InvoicesController < ApplicationController
 	def create
 		@invoice = Invoice.new(invoice_params)
 		@invoice.user = current_user
-		@invoice.save
-		redirect_to invoice_path(@invoice)
+		if @invoice.save
+			redirect_to invoice_path(@invoice)
+		else
+			render :new
+		end
 	end
 
 

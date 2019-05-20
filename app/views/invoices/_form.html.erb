@@ -1,4 +1,5 @@
 <%= form_for(@invoice) do |c| %>
+<%= render partial: 'layouts/errors', locals: {object: @invoice} if @invoice.errors.count != 0 %>
 	<label> Service: </label><br>
   <%= c.hidden_field :project_id %>
 	<%=  c.text_field :service %><br>

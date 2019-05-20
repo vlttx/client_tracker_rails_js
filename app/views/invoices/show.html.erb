@@ -17,7 +17,7 @@
 <h4> Amount: <%= @invoice.amount %> </h4><br>
 <h4> Total: <%= @invoice.total %> </h4><br>
 
-<h3> This invoice is not associated with any project. In order to add it to a project, please Edit Invoice Information</h3>
+<h3 style="color:red"> This invoice is not associated with any project. In order to add it to a project, please Edit Invoice Information</h3>
 	
 
 <h4><%= link_to "Edit Invoice Information", edit_invoice_path(@invoice) %></h4>

@@ -22,7 +22,6 @@ class ClientsController < ApplicationController
 	end
 
 	def create
-		byebug
 		@client = Client.new(client_params)
 		@client.user = current_user
 		if @client.save
