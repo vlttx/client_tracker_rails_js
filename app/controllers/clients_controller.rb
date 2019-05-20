@@ -12,7 +12,8 @@ class ClientsController < ApplicationController
 
 	def show
 		set_client
-		# @client = Client.find(params[:id])
+		@project = @client.project.build #making it available for the nested form
+	end
 	end
 
 	

@@ -13,11 +13,6 @@
   	<%= c.label :project_id, "Select a Project" %>
   	<%= c.collection_select :project_id, Project.all, :id, :description, prompt: true %>
   	<br><br>
-    <h4>Or add a new project:</h4>
-    <%= c.fields_for :project do |v|%>
-        <%= v.label :description %>
-        <%= v.text_field :description %>
-    <% end %>
   <% end %>
 
   <br><br>
