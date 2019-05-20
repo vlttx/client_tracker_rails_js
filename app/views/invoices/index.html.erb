@@ -1,4 +1,8 @@
 
+
+<br>
+
+
 <% if params[:project_id] && @invoices.count != 0%>
 	<h2>Your Invoices for Project "<%=@project.description%>":</h2>
 		<%=render 'index'%>
@@ -14,5 +18,5 @@
 	<%=render 'index'%>
 	<h4>To create a new invoice, click <%=link_to "HERE", new_invoice_path%>.</h4>
 <%else%>
-	<h4 style="color:red">You currently have no invoices. To create a new invoice, click <%=link_to "HERE", new_invoice_path%>.</h4>
+	<h4 style="color:red">You currently have no invoices. To create a new invoice, you first need to create a new client and a project or add it to an existing project.</h4>
 <%end%>

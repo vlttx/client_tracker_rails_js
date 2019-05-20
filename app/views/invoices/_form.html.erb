@@ -12,7 +12,7 @@
 	<br><br>
   <% if !params[:project_id] %>
   	<%= c.label :project_id, "Select from existing projects" %>
-  	<%= c.collection_select :project_id, Project.all, :id, :description, prompt: true %>
+  	<%= c.collection_select :project_id, current_user.projects, :id, :description, prompt: true %>
   	<br><br>
  <% end %>
   <br><br>

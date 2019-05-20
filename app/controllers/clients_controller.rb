@@ -1,7 +1,14 @@
 class ClientsController < ApplicationController
+	before_action :current_user
 	
 	def index
-		@clients = current_user.clients
+		if params[:business_name]
+ 		@client = Client.with_business_name(params[:business_name])
+ 		@client = @client.first
+ 		render :show
+ 	else
+ 		@clients = current_user.clients
+ 	end
 
 	end
 

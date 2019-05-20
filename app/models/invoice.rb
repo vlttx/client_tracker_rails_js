@@ -4,3 +4,4 @@ class Invoice < ApplicationRecord
 	validates_presence_of :service
 	validates_presence_of :total
 end
+	

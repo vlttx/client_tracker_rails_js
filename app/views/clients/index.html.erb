@@ -1,6 +1,14 @@
 
+
+<%if @clients.count != 0%>
 <h1>Your Clients:</h1>
-<% if @clients.count != 0%>
+
+
+<%= form_tag(clients_path, method: :get) do %>
+  <%= text_field_tag :business_name, params[:business_name], placeholder: "Search" %>
+  <%= submit_tag 'Search by Name', name: nil %>
+<% end %>
+<br>
 <ol>
 	<% @clients.each do |c| %>
 	<h3><li>
@@ -8,7 +16,7 @@
 	</li></h3>
 	<%end%>
 </ol>
-	
+	<br>
 	<h4>To add a new client click <%=link_to "HERE", new_client_path%>.</h4>
 <%else %>
 	<h3 style="color:red">You currently have no clients. To add a new client click <%=link_to "HERE", new_client_path%>.</h3>

@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+	before_action :current_user
 
 	def new
 		# check if nested and its a proper id
