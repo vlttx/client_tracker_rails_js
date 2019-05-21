@@ -10,7 +10,7 @@
 <div class="col-sm-6">
 <h4>Address: <a href="https://www.google.com/maps/place/<%=@client.address%>"><%=@client.address%></a></h4>
 <h4>Email: <a href = "mailto: <%=@client.email%>"><%=@client.email%></a></h4>
-<h4>Website: <a href="https://www.<%=@client.website%>"><%=@client.website%></a></h4>
+<h4>Website: <a href="<%=@client.website%>"><%=@client.website%></a></h4>
 <h4>Projects: <%= link_to "All related projects", client_projects_path(@client)%></h4>
 <h4>Add a project: <%= link_to "+ New", new_client_project_path(@client) %></h4><br><br>
 
