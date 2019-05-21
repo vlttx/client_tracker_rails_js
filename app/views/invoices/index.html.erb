@@ -8,15 +8,11 @@
 		<%=render 'index'%>
 <br>
 	<h4>To add a new invoice for this project, click <%=link_to "HERE", new_project_invoice_path(@project)%>. <br>
-        To create an invoice for another project, click <%=link_to "HERE", new_invoice_path%>.</h4>
 
 <% elsif params[:project_id] && @invoices.count == 0 %>
 	<h4 style="color:red">You currently have no invoices for this project. To add a new invoice for this project, click <%=link_to "HERE", new_project_invoice_path(@project)%>.
-	To create an invoice for another project, click <%=link_to "HERE", new_invoice_path%>.</h4>
-
-<%elsif @invoices && @invoices.count != 0 %>
-	<%=render 'index'%>
-	<h4>To create a new invoice, click <%=link_to "HERE", new_invoice_path%>.</h4>
+<% elsif !params[:project_id] && @invoices.count != 0 %>
+<%=render 'index'%>
 <%else%>
 	<h4 style="color:red">You currently have no invoices. To create a new invoice, you first need to create a new client and a project or add it to an existing project.</h4>
 <%end%>

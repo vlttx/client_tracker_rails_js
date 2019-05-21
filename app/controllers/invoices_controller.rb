@@ -4,13 +4,13 @@ class InvoicesController < ApplicationController
 		def new
  		# check if nested and its a proper id
  		@project = Project.find_by_id(params[:project_id].to_i)
-		if params[:project_id] && @project
+		# if params[:project_id] && @project
  		@invoice = Invoice.new(project_id: params[:project_id].to_i)
- 		else
- 		#unnested
- 		@invoice = Invoice.new
- 		@invoice.build_project
- 	end
+ 		@invoice
+ 		# @else
+ 		# #unnested
+ 		# @invoice = Invoice.new
+ 		# @invoice.build_projectß
  	end
 
 	def index
@@ -75,7 +75,7 @@ class InvoicesController < ApplicationController
 	private
 	def set_invoice
 	@invoice = Invoice.find_by(id: params[:id])
-end
+	end
 
 
 end

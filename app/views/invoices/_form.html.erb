@@ -10,13 +10,7 @@
 	<label> Total: </label><br>
 	<%=  c.number_field :total %><br>
 	<br><br>
-  <% if !params[:project_id] %>
-  	<%= c.label :project_id, "Select from existing projects" %>
-  	<%= c.collection_select :project_id, current_user.projects, :id, :description, prompt: true %>
-  	<br><br>
- <% end %>
   <br><br>
-
 	<%= c.submit %>
 <%end%>
 
