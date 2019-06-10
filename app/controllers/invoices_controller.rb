@@ -19,12 +19,20 @@ class InvoicesController < ApplicationController
  			@invoices = @project.invoices
  		else
  		@invoices = current_user.invoices
+ 		respond_to do |format|
+ 			format.html {render :index}
+ 			format.json {render json: @invoices.to_json}
+ 		end
     end
 	end
 
 
 	def show
 		set_invoice
+		respond_to do |format|
+			format.html {render:show}
+			format.json {render json: @invoice.to_json}
+		end
 	end
 
 	
