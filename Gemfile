@@ -12,6 +12,7 @@ gem 'devise'
 gem 'thin'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'active_model_serializers', '~> 0.10.0'
 # Use postgresql as the database for Active Record
 gem "remotipart", "~> 1.0"
 gem 'pg', '>= 0.18', '< 2.0'
