@@ -18,6 +18,10 @@ class ProjectsController < ApplicationController
 			@projects = @client.projects
 		else
 		@projects = current_user.projects
+		respond_to do |format|
+ 			format.html {render :index}
+ 			format.json {render json: @projects.to_json}
+ 		end
 	end
 	end
 
@@ -28,6 +32,10 @@ class ProjectsController < ApplicationController
 	def show
 		@project = Project.find(params[:id].to_i)
 		@client = Client.find(@project.client_id)
+		respond_to do |format|
+			format.html {render:show}
+			format.json {render json: @project.to_json}
+		end
 	end
 
 	def update 
