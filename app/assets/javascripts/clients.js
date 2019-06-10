@@ -12,17 +12,17 @@ $(function(){
 };
 
 
-document.addEventListener("turbolinks:load", function(){
- const body = document.querySelector("body")
- body.addEventListener("click", function(e) {
-   if(e.target.className === "js-more"){
-   	const clientId = e.target.dataset.id
-   	fetch(`http://localhost:3000/clients/${clientId}.json`)
-   	.then(resp => resp.json())
-   	.then(data => {
-   		const show = document.getElementById("client-show")
-   		show.innerHTML = `<p>Address: ${data.address}</p><p>Website: ${data.website}</p><p>Email: ${data.email}</p>`
-   	})
-   }
- });
-});
+// document.addEventListener("turbolinks:load", function(){
+//  const body = document.querySelector("body")
+//  body.addEventListener("click", function(e) {
+//    if(e.target.className === "js-more"){
+//    	const clientId = e.target.dataset.id
+//    	fetch(`http://localhost:3000/clients/${clientId}.json`)
+//    	.then(resp => resp.json())
+//    	.then(data => {
+//    		const show = document.getElementById("client-show")
+//    		show.innerHTML = `<p>Address: ${data.address}</p><p>Website: ${data.website}</p><p>Email: ${data.email}</p>`
+//    	})
+//    }
+//  });
+// });
