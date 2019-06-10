@@ -8,6 +8,10 @@ class ClientsController < ApplicationController
  		render :show
  	else
  		@clients = current_user.clients
+ 		respond_to do |format|
+ 			format.html {render :index}
+ 			format.json {render json: @clients.to_json}
+ 		end
  	end
 
 	end
@@ -19,6 +23,10 @@ class ClientsController < ApplicationController
 
 	def show
 		set_client
+		respond_to do |format|
+			format.html {render:show}
+			format.json {render json: @client.to_json}
+		end
 	end
 
 	
