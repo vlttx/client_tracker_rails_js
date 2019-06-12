@@ -14,7 +14,6 @@
 	<h3><li>
 		<%= link_to c.business_name, client_path(c) %>
 	</li></h3>
-	<div id="client-<%= c.id%>"><%= truncate(c.website)%></div>
 	<button class="js-more" data-id="<%= c.id %>">More Info</button>
 	<%end%>
 </ol>
