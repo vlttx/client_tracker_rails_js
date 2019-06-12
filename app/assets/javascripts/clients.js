@@ -3,6 +3,7 @@
 
 $(document).ready(()=>{
     console.log('Here I am in clients')
+    listenForClick()
 });
 
 
@@ -19,14 +20,18 @@ $(document).ready(()=>{
 // 		});
 // 	})
 // };
-// const fetchClients = () => {
-//   fetch(`/clients.json`)
-//     .then(response => response.json())
-//     .then(data => displayClients(data));
-// };
 
-
-// // Display Functions
+function listenForClick(){
+	$('button.js-more').on('click', function(e){
+		e.preventDefault()
+		let clientId = e.currentTarget.dataset.id
+		fetch(`http://localhost:3000/clients/${clientId}.json`)
+	 	.then(response => response.json())
+		.then(data => console.log(data));
+		// getClients()
+	})
+}
+// Display Functions
 // const displayClients = (data) => {
 //   let indexHtml = buildClientIndex(data);
 //   $('#main-body').html(indexHtml);
@@ -38,57 +43,14 @@ $(document).ready(()=>{
 // };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// $(function(){
-// 	console.log('Jingle Bells');
-// 	listenForClick()
-// });
-
-// function listenForClick(){
-// 	$('button.js-more').on('click', function(e){
-// 		e.preventDefault()
-// 		getClients()
-// 	})
-// }
-
-// function getClients(){
-// 	$.ajax({
-// 		url: 'http://localhost:3000/clients',
-// 		method: 'get',
-// 		dataType: 'json'
-// 	}).done(function(data){
-// 		debugger
-// 		let myClient = new Client(data[0])
-// 		let myClientHTML = myClient.clientHTML()
-// 		document.getElementById('ajax-posts').innerHTML += myClientHTML
-// 	})
-// }
-
-
-// class Client {
-// 	constructor(obj) {
-// 		this.id = obj.id
-// 		this.business_name = obj.business_name
-// 		this.address = obj.address
-// 		this.email = email
-// 		this.projects = projects
-// 	}
-// }
+class Client {
+	constructor(obj) {
+		this.id = obj.id
+		this.business_name = obj.business_name
+		this.address = obj.address
+		this.email = email
+	}
+}
 
 // Client.prototype.clientHTML = function(){
 // 	return (`
@@ -96,7 +58,6 @@ $(document).ready(()=>{
 // 		<h3>${this.business_name}</h3>
 // 		<p><h4>${this.address}<h4></p>
 // 		<p><h4>${this.email}</h4></p>
-// 		<p><h4>${this.projects}</h4></p>
 // 		</div>
 // 		`)
 // }
