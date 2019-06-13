@@ -3,6 +3,7 @@
 $(document).ready(()=>{
 	console.log('Here I am in clients')
 	listenForClick()
+	listenForNewClientFormClick()
 });
 
 function listenForClick(){
@@ -30,6 +31,18 @@ class Client {
 		this.email = obj.email
 		this.projects = obj.projects
 			}
+
+		static newClientForm() {
+		return (`
+		<strong>New Client Form</strong>
+		<form>
+		<input id='client-business-name' type='text' name='business-name'</input><br>
+		<input type='text' name='address'></input><br>
+		<input type='text' name='email'</input><br>
+		<input type='submit' />
+		</form>
+		`)
+}
 		}
 
 
@@ -57,15 +70,16 @@ Client.prototype.clientHTML = function(){
 		`)
 }
 
+function listenForNewClientFormClick(){
+		$('button.js-new').on('click', function(e){
+			e.preventDefault();
+			console.log("Jingle Bells")
+			let newClientForm = Client.newClientForm();
+			debugger
+			
+	});
+}
 
-// Client.prototype.newClientForm = function(){
-// 	return (`
-// 		<strong>New Client Form</strong>
-// 		<form>
-// 		<input id='client-business-name' type='text' name='business-name'</input><br>
-// 		<input type='text' name='address'></input><br>
-// 		<input type='text' name='email'</input><br>
-// 		<input type='submit' />
-// 		</form>
-// 		`)
-// }
+
+
+
