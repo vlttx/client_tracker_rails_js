@@ -1,9 +1,10 @@
 $(document).ready(()=>{
 	console.log('Here I am in projects');
+	listenForClicks()
 });
 	let counter = 0
-function listenForClick(){
-$('button.js-proj').on('click', function(e){
+	function listenForClicks(){
+	$('button.js-proj').on('click', function(e){
 			
 
 				if (counter === 0){
@@ -27,13 +28,3 @@ $('button.js-proj').on('click', function(e){
 		});
 	};
 
-// Display Function
-	 // const displayInvoices = (data) => {
-	 // 	return (`
-	 // 	<div>
-	 // 	<p>Invoices for this project:</p>
-	 // 	<p><h4>Service: ${data.website}</h4></p>
-		// <p><h4>Total: ${data.email}</h4></p>
-		// </div>
-		// `)
-	 // }
