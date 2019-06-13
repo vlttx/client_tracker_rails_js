@@ -34,11 +34,11 @@ class Client {
 
 		static newClientForm() {
 		return (`
-		<strong>New Client Form</strong>
+		<strong>New Client Form</strong><br>
 		<form>
-		<input id='client-business-name' type='text' name='business-name'</input><br>
-		<input type='text' name='address'></input><br>
-		<input type='text' name='email'</input><br>
+		<input id='client-business-name' type='text' name='business-name' placeholder = "Business Name"></input><br>
+		<input type='text' name='address' placeholder = "Address"></input><br>
+		<input type='text' name='email'placeholder = "Email"</input><br>
 		<input type='submit' />
 		</form>
 		`)
@@ -75,7 +75,8 @@ function listenForNewClientFormClick(){
 			e.preventDefault();
 			console.log("Jingle Bells")
 			let newClientForm = Client.newClientForm();
-			debugger
+			let place = document.getElementById("new-client")
+			place.innerHTML = newClientForm
 			
 	});
 }
