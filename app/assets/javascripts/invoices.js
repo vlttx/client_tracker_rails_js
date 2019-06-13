@@ -1,3 +1,3 @@
 $(document).ready(()=>{
-    console.log('Here I am in clients')
+    console.log('Here I am in invoices')
 });
