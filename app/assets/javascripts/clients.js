@@ -1,91 +1,61 @@
 
-// doc loading:
 
 $(document).ready(()=>{
-    console.log('Here I am in clients')
+	console.log('Here I am in clients')
     listenForClick()
 });
 
-
-
-// <script type="text/javascript" chartset="utf-8">
-// $(function(){
-// 	$(".js-more").on("click", function(){
-// 		let id = $(this).data("id");
-// 		$.get("/clients/" + id + "/projects", function(project){
-// 			let projects_list = "<strong>Has projects</strong>";
-// 			if (projects === 'false'){
-// 				projects_list = "<strong>No projects yet</strong>";
-// 			}
-// 		});
-// 	})
-// };
-
 function listenForClick(){
 	$('button.js-more').on('click', function(e){
-		e.preventDefault()
+		// e.preventDefault()
 		let clientId = e.currentTarget.dataset.id
 		fetch(`http://localhost:3000/clients/${clientId}.json`)
 	 	.then(response => response.json())
-		.then(data => console.log(data));
-		// getClients()
+		.then(data => {
+		const show = document.getElementById("client-show")
+		const client = new Client(data)
+		// let client = displayClient(data);
+		show.innerHTML = client.clientHTML();
+		});
 	})
 }
-// Display Functions
-// const displayClients = (data) => {
-//   let indexHtml = buildClientIndex(data);
-//   $('#main-body').html(indexHtml);
-//   data.forEach(client => {
-//     let newClient = new Client(client);
-//     let eachHtml = newClient.formatIndex();
-//     $(`.status-${newClient.statusDiv}`).append(eachHtml);
-//   });
-// };
+
+
 
 
 class Client {
 	constructor(obj) {
 		this.id = obj.id
-		this.business_name = obj.business_name
+		this.website = obj.website
 		this.address = obj.address
-		this.email = email
+		this.email = obj.email
 	}
 }
 
-// Client.prototype.clientHTML = function(){
-// 	return (`
-// 		<div>
-// 		<h3>${this.business_name}</h3>
-// 		<p><h4>${this.address}<h4></p>
-// 		<p><h4>${this.email}</h4></p>
-// 		</div>
-// 		`)
-// }
-
-// Client.prototype.newClientForm = function(){
-// 	return (`
-// 		<strong>New Client Form</strong>
-// 		<form>
-// 		<input id='client-business-name' type='text' name='business-name'</input><br>
-// 		<input type='text' name='address'></input><br>
-// 		<input type='text' name='email'</input><br>
-// 		<input type='submit' />
-// 		</form>
-// 		`)
-// }
+Client.prototype.clientHTML = function(){
+	return (`
+		<div>
+	 	<p>Information about this client:</p>
+	 	<p><h4>Website: ${this.website}</h4></p>
+		<p><h4>Email: ${this.email}</h4></p>
+		<p><h4>Address: ${this.address}<h4></p>
+		<div class="mapouter">
+		<div class="gmap_canvas">
+		<iframe width="399" height="271" id="gmap_canvas" src="https://maps.google.com/maps?q=${this.address}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Werbung: <a href="https://www.jetzt-drucken-lassen.de">jetzt-drucken-lassen.de</a></div><style>.mapouter{position:relative;text-align:right;height:271px;width:399px;}.gmap_canvas {overflow:hidden;background:none!important;height:271px;width:399px;}</style>
+		</div>
+		</div>
+		`)
+}
 
 
-// document.addEventListener("turbolinks:load", function(){
-//  const body = document.querySelector("body")
-//  body.addEventListener("click", function(e) {
-//    if(e.target.className === "js-more"){
-//    	const clientId = e.target.dataset.id
-//    	fetch(`http://localhost:3000/clients/${clientId}.json`)
-//    	.then(resp => resp.json())
-//    	.then(data => {
-//    		const show = document.getElementById("client-show")
-//    		show.innerHTML = `<p>Address: ${data.address}</p><p>Website: ${data.website}</p><p>Email: ${data.email}</p>`
-//    	})
-//    }
-//  });
-// });
+Client.prototype.newClientForm = function(){
+	return (`
+		<strong>New Client Form</strong>
+		<form>
+		<input id='client-business-name' type='text' name='business-name'</input><br>
+		<input type='text' name='address'></input><br>
+		<input type='text' name='email'</input><br>
+		<input type='submit' />
+		</form>
+		`)
+}
