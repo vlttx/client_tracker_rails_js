@@ -28,7 +28,8 @@
 	<%end%>
 </ol>
 	<br>
-	<h4>To add a new client click <%=link_to "HERE", new_client_path%>.</h4>
+	<h4>To add a new client with all details click <%=link_to "HERE", new_client_path%> or use a quick form <button class="js-new">Quick Add</button> </h4>
+	<div id="new-client"></div>
 <%else %>
 	<h3 style="color:red">You currently have no clients. To add a new client click <%=link_to "HERE", new_client_path%>.</h3>
 <%end%>
