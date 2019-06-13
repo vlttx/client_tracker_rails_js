@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
  		@clients = current_user.clients
  		respond_to do |format|
  			format.html {render :index}
- 			format.json {render json: @clients.to_json}
+ 			format.json {render json: @clients}
  		end
  	end
 
@@ -25,7 +25,7 @@ class ClientsController < ApplicationController
 		set_client
 		respond_to do |format|
 			format.html {render:show}
-			format.json {render json: @client.to_json}
+			format.json {render json: @client}
 		end
 	end
 
@@ -46,6 +46,18 @@ class ClientsController < ApplicationController
 			redirect_to new_client_path
 		end
 	end
+
+	# def create
+	# 	@client = Client.new(client_params)
+	# 	if @client.save
+	# 		respond_to do |f|
+	# 			f.html {redirect_to client_path(@client)}
+	# 			f.json {render json: @client}
+	# 		end
+	# 	else
+	# 		render :new
+	# 	end
+	# end
 
 	 def update 
 	 	set_client
