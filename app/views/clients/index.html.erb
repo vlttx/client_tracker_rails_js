@@ -1,5 +1,7 @@
 
-
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6">
 <%if @clients.count != 0%>
 <h1>Your Clients:</h1>
 
@@ -8,12 +10,20 @@
   <%= text_field_tag :business_name, params[:business_name], placeholder: "Search" %>
   <%= submit_tag 'Search by Name', name: nil %>
 <% end %>
+
+
 <br>
+
+
+
 <ol>
 	<% @clients.each do |c| %>
 	<h3><li>
 		<%= link_to c.business_name, client_path(c) %>
 	</li></h3>
+
+	
+    
 	<button class="js-more" data-id="<%= c.id %>">More Info</button>
 	<%end%>
 </ol>
@@ -22,3 +32,14 @@
 <%else %>
 	<h3 style="color:red">You currently have no clients. To add a new client click <%=link_to "HERE", new_client_path%>.</h3>
 <%end%>
+</div>
+<div class="col-sm-6">
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h2><div id="client-show" align="center"></h2></div>
+	</div>
+</div>
+</div>
