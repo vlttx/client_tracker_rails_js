@@ -17,9 +17,9 @@
 
 <br>
 
-
+<div class="index" align="left">
 <ol>
-	<div class="index" align="left">
+	
 	<% @clients.each do |c| %>
 	<h3><%= link_to c.business_name, client_path(c) %>
 	</h3>
@@ -28,7 +28,8 @@
     
 	<button class="js-more" data-id="<%= c.id %>">More Info</button>
 
-	<%end%>
+
+<%end%>	
 </ol>
 </div>
 
