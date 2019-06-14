@@ -81,9 +81,24 @@ function listenForNewClientFormClick(){
 			let newClientForm = Client.newClientForm();
 			let place = document.getElementById("new-client")
 			place.innerHTML = newClientForm
+
+				console.log('new form')
+				$('#newc').on('submit', function(e){
+				e.preventDefault();
+				console.log(e)
+				const values = $(this).serialize()
+				$.post('/clients', values)
+				.done(function(data){
+				$('#thing').html('');
+				let newClient = new Client(data);
+				let newHtml = newClient.clientHTML();
+				$('#thing').html(newHtml);
+				});
+});
 			
 	});
-		$('.new_client').on('submit', function(e){
+	
+		$('#new_client').on('submit', function(e){
 	e.preventDefault();
 	const values = $(this).serialize()
 	$.post('/clients', values)
@@ -97,20 +112,12 @@ function listenForNewClientFormClick(){
 
 });
 
-		$('#newc').parent().html("<%= j render 'form', client: @client%>");
-	// 	$('#newc').on('submit', function(e){
-	// e.preventDefault();
-	// console.log('what what???')
-	// const values = $(this).serialize()
-	// $.post('/clients', values)
-	// .done(function(data){
-	// $('#thing').html('');
-	// let newClient = new Client(data);
-	// let newHtml = newClient.clientHTML();
-	// $('#thing').html(newHtml);
-	// });
-// });
 };
+
+
+//$('#newc').remove();
+//$('#newc button');
+//$('#thing').append("<%= j render @client %>")
 
 
 
