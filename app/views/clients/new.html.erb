@@ -1,2 +1,46 @@
 <h2>Create a new client record: </h2>
 <%= render 'form' %>
+
+<!-- 
+<div id="clientAdd">
+  <h2 id="clientBusiness"></h2>
+  <p id="clientEmail"></p>
+  <p id="clientWebsite"></p>
+  <p id="clientAddress"></p>
+</div>
+
+<script type="text/javascript" src="http://form-serialize.googlecode.com/svn/trunk/serialize-0.2.min.js">
+  $(function () {
+    $('form').submit(function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+      debugger
+      alert("we r hack3rz");
+      // let values = $(this).serialize();//serialize method takes form data and serializes it for us for creating JSON
+      // let client = $.post('/clients', values);//jQuery's post which passes the url and values
+      // client.done(function(data){
+      // 	debugger
+      // 	console.log(client)
+      // 	$("#clientBusiness").text(client["business_name"])
+      // 	$("#clientEmail").text(client["email"])
+      // 	$("#clientWebsite").text(client["website"])
+      // 	$("#clientAddress").text(client["address"])
+
+      // });
+    });
+  });
+</script> -->
+
+<!-- $(function(){
+  $("#my_form").on("submit", function(event){
+    $.ajax({
+      type: "POST",
+      url: this.action,
+      data: $(this).serialize(),
+      success: function(response) {
+        //update the DOM
+      }
+    });
+    event.preventDefault();
+  });
+}) -->
