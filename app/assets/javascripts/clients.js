@@ -29,16 +29,16 @@ class Client {
 		this.website = obj.website
 		this.address = obj.address
 		this.email = obj.email
-		this.projects = obj.projects
 			}
 
 		static newClientForm() {
 		return (`
 		<strong>New Client Form</strong><br>
-		<form>
-		<input id='client-business-name' type='text' name='business-name' placeholder = "Business Name"></input><br>
-		<input type='text' name='address' placeholder = "Address"></input><br>
-		<input type='text' name='email'placeholder = "Email"</input><br>
+		<form id="newc">
+		<input id='client-business-name' type='text' name="client[business_name]" placeholder = "Business Name"></input><br>
+		<input type='text' name="client[address]" placeholder = "Address"></input><br>
+		<input type='text' name="client[website]" placeholder = "Website"</input><br>
+		<input type='text' name="client[email]" placeholder = "Email"</input><br>
 		<input type='submit' />
 		</form>
 		`)
@@ -47,12 +47,16 @@ class Client {
 
 
 		function projectData (data){
+			if (data.projects){
 			projectArr = [];
 			data.projects.forEach(function (project) {
 									projectArr.push(project.description);
 								});
 								return projectArr;
+		} else {
+			return (`no projects at the moment`);
 		}
+	};
 
 Client.prototype.clientHTML = function(){
 	return (`
@@ -79,8 +83,63 @@ function listenForNewClientFormClick(){
 			place.innerHTML = newClientForm
 			
 	});
-}
+		$('.new_client').on('submit', function(e){
+	e.preventDefault();
+	const values = $(this).serialize()
+	$.post('/clients', values)
+	.done(function(data){
+	$('#thing').html('');
+	let newClient = new Client(data);
+	let newHtml = newClient.clientHTML();
+	$('#thing').html(newHtml);
+	});
 
 
+});
+
+		$('#newc').parent().html("<%= j render 'form', client: @client%>");
+	// 	$('#newc').on('submit', function(e){
+	// e.preventDefault();
+	// console.log('what what???')
+	// const values = $(this).serialize()
+	// $.post('/clients', values)
+	// .done(function(data){
+	// $('#thing').html('');
+	// let newClient = new Client(data);
+	// let newHtml = newClient.clientHTML();
+	// $('#thing').html(newHtml);
+	// });
+// });
+};
+
+
+
+// Get the new note form via AJAX GET request
+// function newNote() {
+//  $(document).on("click", '.js-new-note', function(event) {
+//   event.preventDefault();
+//   $.get( $(event.target).attr('href'), function( data ) {
+//    var note = new Note(data);
+//    var noteRender = note.renderNewNote();
+//    $("#new-note").html("");
+//    $("#new-note").append(noteRender);
+//   });
+//  });
+// }
+
+// // Create a note via an AJAX POST request
+// function createNote() {
+//  $(document).on("submit", ".create-note", function(event) {
+//   event.preventDefault();
+//   var values = $(this).serialize();
+//   var url = $(event.target).attr('action');
+//   $.post(url, values, function( data ) {
+//    $("#new-note").html("");
+//    var note = new Note(data);
+//    var noteRender = note.renderIndexNote();
+//    $(".notes-block").prepend(noteRender);
+//   });
+//  }); 
+// }
 
 
