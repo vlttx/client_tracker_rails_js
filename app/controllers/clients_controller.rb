@@ -2,16 +2,16 @@ class ClientsController < ApplicationController
 	before_action :current_user
 	
 	def index
-		if params[:business_name]
- 		@client = Client.with_business_name(params[:business_name])
- 		@client = @client.first
- 		render :show
- 	else
+		# if params[:business_name]
+ 	# 	@client = Client.with_business_name(params[:business_name])
+ 	# 	@client = @client.first
+ 	# 	render :show
+ 	# else
  		@clients = current_user.clients
  		respond_to do |format|
  			format.html {render :index}
  			format.json {render json: @clients}
- 		end
+ 		# end
  	end
 
 	end
