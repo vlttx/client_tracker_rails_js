@@ -34,30 +34,31 @@ class ClientsController < ApplicationController
 		set_client
 	end
 
-	def create
-		@client = Client.new(client_params)
-		@client.user = current_user
-		if @client.save
-				redirect_to client_path(@client)
-		elsif 
-			@client.projects.build
-			render :new
-		else
-			redirect_to new_client_path
-		end
-	end
-
 	# def create
 	# 	@client = Client.new(client_params)
+	# 	@client.user = current_user
 	# 	if @client.save
-	# 		respond_to do |f|
-	# 			f.html {redirect_to client_path(@client)}
-	# 			f.json {render json: @client}
-	# 		end
-	# 	else
+	# 			redirect_to client_path(@client)
+	# 	elsif 
+	# 		@client.projects.build
 	# 		render :new
+	# 	else
+	# 		redirect_to new_client_path
 	# 	end
 	# end
+
+	def create
+		@client = current_user.clients.build(client_params)
+		if @client.save
+			# respond_to do |f| 
+			# format.html {render:show}
+			# format.json {render json: @client}
+			# end
+		render json: @client
+		else
+		redirect_to new_client_path
+		end
+	end
 
 	 def update 
 	 	set_client
