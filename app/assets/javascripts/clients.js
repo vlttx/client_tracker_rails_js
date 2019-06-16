@@ -26,6 +26,7 @@ function listenForClick(){
 class Client {
 	constructor(obj) {
 		this.id = obj.id
+		this.business_name = obj.business_name
 		this.website = obj.website
 		this.address = obj.address
 		this.email = obj.email
@@ -62,6 +63,7 @@ Client.prototype.clientHTML = function(){
 	return (`
 		<div>
 	 	<p>Information about this client:</p>
+	 	<p><h4>Business name: ${this.business_name}</h4></p>
 	 	<p><h4>Website: ${this.website}</h4></p>
 		<p><h4>Email: ${this.email}</h4></p>
 		<p><h4>Projects: ${projectData(this)}</h4></p>
@@ -77,7 +79,6 @@ Client.prototype.clientHTML = function(){
 function listenForNewClientFormClick(){
 		$('button.js-new').on('click', function(e){
 			e.preventDefault();
-			console.log("Jingle Bells")
 			let newClientForm = Client.newClientForm();
 			let place = document.getElementById("new-client")
 			place.innerHTML = newClientForm
