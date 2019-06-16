@@ -1,7 +1,7 @@
 <ol>
 	<% @invoices.each do |i| %>
 	<h4><li>
-		<%= link_to i.service, invoice_path(i) %></h4> <h5> - <%= last_modified i %></h5>
+		<%= link_to i.service, invoice_path(i) %> - (client: <%= who_client(i) %>)</h4> <h5> - <%= last_modified i %></h5>
 	</li>
 	<%end%>
 		</ol>
