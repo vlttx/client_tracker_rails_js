@@ -2,12 +2,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-6">
-			
+	
+<div class="index" align="left">
+<ol>		
 <%if @clients.count != 0%>
 
 
-<h1>Your Clients:</h1>
-
+<h2>Your Clients:</h2>
 
 <%= form_tag(clients_path, method: :get) do %>
   <%= text_field_tag :business_name, params[:business_name], placeholder: "Search" %>
@@ -17,34 +18,41 @@
 
 <br>
 
-<div class="index" align="left">
-<ol>
-	
-	<% @clients.each do |c| %>
-	<h3><%= link_to c.business_name, client_path(c) %>
-	</h3>
+<!-- <h3><p style="text-align:center;"></h3></p><form action="<%=clients_path%>" method="get">
+	<button type="submit" class="btn btn-primary btn-block" value="Clients" >VIEW YOUR CLIENTS</button>
+</form> -->
 
 	
+<% @clients.each do |c| %>
+<h4><li><%=c.business_name%></li>
+<form action="<%=client_path(c)%>" method="get" style="display:inline-block">
+	<button type="submit" class="btn btn-primary btn-md" value="Clients" style="display:inline-block">Client View Page</button>
+</form>
+<button class="js-more btn btn-primary btn-md" data-id="<%= c.id %>" style="display:inline-block">Quick Info</button></h4>
+<!-- <h4><%= link_to c.business_name, client_path(c) %>
+</h4> -->
+<!-- 
+	<button class="js-more" data-id="<%= c.id %>">More Info</button> -->
     
-	<button class="js-more" data-id="<%= c.id %>">More Info</button>
+	
 
 
 <%end%>	
 </ol>
 </div>
 
-	<br>
-	<h4>To add a new client with all details click <%=link_to "HERE", new_client_path%> or use a quick form <button class="js-new">Quick Add</button> </h4>
-	<div id="new-client"></div>
-<%else %>
-	<h3 style="color:red">You currently have no clients. To add a new client click <%=link_to "HERE", new_client_path%>.</h3>
-<%end%>
+	
 </div>
 <div class="col-sm-6">
 	<br>
+	<h4>To add full details of a new client click <%=link_to "HERE", new_client_path%> or <button class="js-new btn btn-primary btn-md">Quick Add</button> </h4>
+<%else %>
+	<h3 style="color:red">You currently have no clients. To add a new client click <%=link_to "HERE", new_client_path%>.</h3>
+<%end%>
 	<br>
 	<br>
-	<h2><div id="client-show" align="left"></h2></div>
+	<h3><div id="new-client"></div></h3>
+	<h3><div id="client-show" align="left"></h3></div>
 	</div>
 </div>
 </div>
