@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm=6">
-<h4>"<%=@project.description%>"" for <%=@project.client.business_name %> 
+<h4>"<%=@project.description%>" for <%=@project.client.business_name %> 
 <p>is on your project list!</p></h4>
 <h4><%= link_to "Create Invoice for this Project", new_project_invoice_path(@project) %></h4>
 <h4><%= link_to "Edit invoices created for this project or click", project_invoices_path(@project) %> <button class="js-proj" data-id="<%= @project.id %>">View List</button></h4> <div class="col-sm=6">
