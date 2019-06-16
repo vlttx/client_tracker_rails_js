@@ -14,9 +14,11 @@ class InvoicesController < ApplicationController
  	end
 
 	def index
+
  		if params[:project_id]
  			@project = Project.find_by_id(params[:project_id].to_i)
  			@invoices = @project.invoices
+
  		else
  		@invoices = current_user.invoices
  		respond_to do |format|
@@ -80,10 +82,10 @@ class InvoicesController < ApplicationController
 	end
 	end
 
-	private
-	def set_invoice
-	@invoice = Invoice.find_by(id: params[:id])
-	end
+	# private
+	# def set_invoice
+	# @invoice = Invoice.find_by(id: params[:id])
+	# end
 
 
 end
