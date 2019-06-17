@@ -1,11 +1,12 @@
 $(document).ready(()=>{
-	let counter = 0;
+	
 	console.log('Here I am in clients')
 	listenForClick();
 	listenForNewClientFormClick();
 });
 
 function listenForClick(){
+	let counter = 0;
 	console.log("listening for clicks is on")
 	if (counter===0){
 	$('button.js-more').on('click', function(e){
@@ -107,12 +108,12 @@ function projectData (data){
 Client.prototype.clientHTML = function(){
 	return (`
 		<div class="client-show" style="display:inline-block">
-	 	<p><h4>Client information:</p></h4>
-	 	<p><h5></p>Business name: ${this.business_name}</h5></p></p>
-	 	<p><h5></p>Website: ${this.website}</h5></p></p>
-		<p><h5></p>Email: ${this.email}</h5></p></p>
-		<p><h5></p>Projects: ${projectData(this)}</h5></p></p>
-		<p><h5></p>Address: ${this.address}<h5></p></p>
+	 	<p><h4><strong>Client information:</strong></p></h4>
+	 	<p><h5><strong>Business name: </strong>${this.business_name}</h5></p>
+	 	<p><h5><strong>Website: </strong>${this.website}</h5></p>
+		<p><h5><strong>Email: </strong>${this.email}</h5></p></p>
+		<p><h5><strong>Projects: ${projectData(this)}</h5></strong></p>
+		<p><h5><strong>Address: ${this.address}<h5></strong></p>
 		<div class="mapouter">
 		<div class="gmap_canvas">
 		<iframe width="399" height="271" id="gmap_canvas" src="https://maps.google.com/maps?q=${this.address}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Werbung: <a href="https://www.jetzt-drucken-lassen.de">jetzt-drucken-lassen.de</a></div><style>.mapouter{position:relative;text-align:right;height:271px;width:399px;}.gmap_canvas {overflow:hidden;background:none!important;height:271px;width:399px;}</style>
@@ -162,6 +163,7 @@ function listenForNewClientFormClick(){
 });
 
 };
+
 
 
 
