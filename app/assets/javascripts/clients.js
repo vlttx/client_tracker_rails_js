@@ -1,31 +1,40 @@
-
-
 $(document).ready(()=>{
 	let counter = 0;
 	console.log('Here I am in clients')
 	listenForClick();
 	listenForNewClientFormClick();
-	hideMe();
-	// cancelForm();
-
 });
 
 function listenForClick(){
+	console.log("listening for clicks is on")
 	if (counter===0){
 	$('button.js-more').on('click', function(e){
+		e.preventDefault();
 		let clientId = e.currentTarget.dataset.id
 		fetch(`http://localhost:3000/clients/${clientId}.json`)
 	 	.then(response => response.json())
 		.then(data => {
 		const show = document.getElementById("client-show")
 		const client = new Client(data)
-		show.innerHTML = client.clientHTML();
-	
+		let newForm = document.getElementById('newc');
+			if (newForm){
+			newForm.style.display = "none"
+			show.innerHTML = client.clientHTML();
+			$(this).attr("display", "inline-block")
+			console.log("hideMe is here")
+			hideMe();
+
+			}else{
+				show.innerHTML = client.clientHTML();
+				$(this).attr("display", "inline-block")
+				console.log("hideMe2 is here")
+				hideMe();
+			}
+
 	});
-		counter+=1
 	});
 	}else{
-		$('button.js-more').on('click', function(e){
+		$('button.js-more').on('click', function(){
 		const show = document.getElementById("client-show")
 		show.innerHTML = '';
 		
@@ -33,22 +42,6 @@ function listenForClick(){
 		counter -=1;
 }
 }
-
-
-function hideMe(){
-	$('#client-show').on('click', function(e){
-			document.getElementById("client-show").innerHTML = ''
-	 });
-}
-
-// function cancelForm(){
-// 	console.log("Cancel is here")
-// 	$('#cancelMe').on('click', function(e){
-// 		console.log(e)
-// 			document.getElementById("newc").innerHTML = ''
-// 			document.getElementById("cancel").remove();
-// 	 });
-// }
 
 
 class Client {
@@ -69,30 +62,51 @@ class Client {
 		<input type='text' name="client[website]" placeholder = "Website"</input>
 		<input type='text' name="client[email]" placeholder = "Email"</input><br>
 		<input type='submit' value= "SUBMIT" class="btn btn-success btn-md" />
-		<button type="button" id="cancelMe" class="btn btn-danger btn-md" style="display:inline-block">CANCEL</button>
+		<button type="button" id="cancelMe" onclick="toggle('newc')" class="btn btn-danger btn-md" style="display:inline-block">CANCEL</button>
 		</form>
 		<br>
 		
 		`)
+		}
 }
-		}
+
+function hideMe(){
+	console.log("hiding's here")
+	if (document.getElementById('client-show').innerHTML != ""){
+		console.log("full inner has fired")
+		$('button#hide.btn.btn-danger.btn-md').on('click', function(e){
+		e.preventDefault()
+		let clientView = document.getElementById('client-show');
+		clientView.innerHTML = ''
+	})
+}else{
+	console.log("else condition fired")
+	listenForClick();
+}
+}
+
+function toggle(divId) {
+  	let divN = document.getElementById(divId);
+  	// Toggle 
+  	divN.style.display == "inline-block" ? divN.style.display = "none" : divN.style.display = "inline-block"; 
+}
 
 
-		function projectData (data){
-			if (data.projects){
-			projectArr = [];
-			data.projects.forEach(function (project) {
-									projectArr.push(project.description);
-								});
-								return projectArr;
-		} else {
-			return (`no projects at the moment`);
-		}
-	};
+function projectData (data){
+	if (data.projects){
+	projectArr = [];
+	data.projects.forEach(function (project) {
+							projectArr.push(project.description);
+						});
+						return projectArr;
+} else {
+	return (`no projects at the moment`);
+}
+};
 
 Client.prototype.clientHTML = function(){
 	return (`
-		<div>
+		<div class="client-show" style="display:inline-block">
 	 	<p><h4>Client information:</p></h4>
 	 	<p><h5></p>Business name: ${this.business_name}</h5></p></p>
 	 	<p><h5></p>Website: ${this.website}</h5></p></p>
@@ -105,7 +119,8 @@ Client.prototype.clientHTML = function(){
 		</div>
 		</div>
 		<br>
-		<button id="hide" class="btn btn-primary btn-md">CLOSE</button>
+		<button id="hide" class="btn btn-danger btn-md">CLOSE</button>
+		</div>
 		`)
 }
 
@@ -147,6 +162,29 @@ function listenForNewClientFormClick(){
 });
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //$('#newc').remove();
