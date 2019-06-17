@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-sm-6">
 	
-<div class="index" align="left">
+<div class="index" align="left" style="overflow: auto;">
 <ol>		
 <%if @clients.count != 0%>
 
@@ -24,11 +24,11 @@
 
 	
 <% @clients.each do |c| %>
-<h4><li><%=c.business_name%></li>
+<h5 style="background-color:rgba(222, 225, 230, 0.5)"><li><%=c.business_name%></li>
 <form action="<%=client_path(c)%>" method="get" style="display:inline-block">
 	<button type="submit" class="btn btn-primary btn-md" value="Clients" style="display:inline-block">Client View Page</button>
 </form>
-<button class="js-more btn btn-primary btn-md" data-id="<%= c.id %>" style="display:inline-block">Quick Info</button></h4>
+<button class="js-more btn btn-primary btn-md" data-id="<%= c.id %>" style="display:inline-block">Quick Info</button></h5>
 <!-- <h4><%= link_to c.business_name, client_path(c) %>
 </h4> -->
 <!-- 
@@ -45,7 +45,8 @@
 </div>
 <div class="col-sm-6">
 	<br>
-	<h4>To add full details of a new client click <%=link_to "HERE", new_client_path%> or <button class="js-new btn btn-primary btn-md">Quick Add</button> </h4>
+	<h4>To add full details of a new client click <%=link_to "HERE", new_client_path, :class => "btn btn-primary btn-md"%> or <button class="js-new btn btn-primary btn-md">Quick Add</button> </h4>
+
 <%else %>
 	<h3 style="color:red">You currently have no clients. To add a new client click <%=link_to "HERE", new_client_path%>.</h3>
 <%end%>
@@ -53,6 +54,7 @@
 	<br>
 	<h3><div id="new-client"></div></h3>
 	<h3><div id="client-show" align="left"></h3></div>
+
 	</div>
 </div>
 </div>
