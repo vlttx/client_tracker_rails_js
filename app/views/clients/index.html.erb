@@ -9,19 +9,12 @@
 
 
 <h2>Your Clients:</h2>
-
 <%= form_tag(clients_path, method: :get) do %>
   <%= text_field_tag :business_name, params[:business_name], placeholder: "Search" %>
-  <%= submit_tag 'Search by Name', name: nil %>
+  <%= submit_tag 'Search by Name', name: nil, id: 'sf' %>
 <% end %>
 
-
 <br>
-
-<!-- <h3><p style="text-align:center;"></h3></p><form action="<%=clients_path%>" method="get">
-	<button type="submit" class="btn btn-primary btn-block" value="Clients" >VIEW YOUR CLIENTS</button>
-</form> -->
-
 	
 <% @clients.each do |c| %>
 <h5 style="background-color:rgba(222, 225, 230, 0.5)"><li><%=c.business_name%></li>
@@ -44,7 +37,7 @@
 <%end%>
 	<h3><div id="new-client"  style="background-color:rgba(222, 225, 230, 0.5)"></div></h3>
 	<h3>
-		<div id="client-show" align="left"  style="background-color:rgba(222, 225, 230, 0.5), display:inline-block"></h3></div>
+		<div id="client-show" align="left"  style="background-color:rgba(222, 225, 230, 0.5)"></h3></div>
 	</div>
 </div>
 </div>
