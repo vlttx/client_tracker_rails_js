@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html
+style="width: 100%;
+height: 100%">
   <head>
     <title>ClientTrackerRails</title>
     <%= csrf_meta_tags %>
@@ -8,10 +10,17 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
+    <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Montserrat">
     <style>
 body {
-  background-image: url('/images/dark-honeycomb.png');
-  color:  white;
+  background-image: url('/images/jesus-kiteque-224069-unsplash.jpg');
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;  
+  color:  #0E1422;
+  font-family: 'Montserrat', serif;
+  /* text-shadow: 0.2px 0.5px #000000; */
 }
  </style>
 
