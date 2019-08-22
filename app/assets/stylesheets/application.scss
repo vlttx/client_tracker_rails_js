@@ -14,3 +14,16 @@
 
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import 'bootstrap';
+
+
+table.table-bordered > thead > tr > th {
+  border:3px solid powderblue;
+}
+
+table.table-bordered > tbody > tr > td {
+  border:1px solid powderblue;
+}
+
+table.table-bordered > tbody > tr > th {
+  border:3px solid powderblue;
+}
