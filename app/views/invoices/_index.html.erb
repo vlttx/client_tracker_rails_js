@@ -5,14 +5,16 @@
 			<th>Service</th>
 			<th>Client</th>
 			<th>Last Modified</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @invoices.each do |i| %>
 		<tr>
-			<th><%= link_to i.service, invoice_path(i) %></th>
+			<th><%= i.service %></th>
 			<td><%= who_client(i) %></td>
 			<td><%= last_modified i %></td>
+			<td class="text-center"><%= link_to "Open", invoice_path(i), :class => "btn btn-primary btn-md" %>&nbsp<%= link_to "Edit", edit_invoice_path(i), :class => "btn btn-success btn-md" %>&nbsp<%= link_to "Delete", i, method: :delete,  data: { confirm: "Are you sure you want to delete this invoice?" }, :class => "btn btn-danger btn-md"%></td>
 		</tr>
 		<%end%>
 	</tbody>

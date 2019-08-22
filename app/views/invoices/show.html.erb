@@ -32,20 +32,41 @@
 
 <%= link_to "Edit", edit_invoice_path(@invoice), :class => "btn btn-success btn-md"%>
 <%= link_to "Delete", @invoice, method: :delete, data: { confirm: "Are you sure you want to delete this invoice?"}, :class => "btn btn-danger btn-md"%>
-<%= link_to "Back", project_path(@invoice.project), :class => "btn btn-primary btn-md" %>
+<%= link_to "Back to Project", project_path(@invoice.project), :class => "btn btn-primary btn-md" %>
 
 <%else%>
-<h4> Service provided: <%= @invoice.service %> </h4><br>
-<h4> Rate: <%= @invoice.rate %> </h4><br>
-<h4> Amount: <%= @invoice.amount %> </h4><br>
-<h4> Total: <%= @invoice.total %> </h4><br>
-
 <div class="alert alert-danger" role="alert"><h3 style="color:red"> This invoice is not associated with any project. In order to add it to a project, please create a client and/or project first.</h3></div>
-	
-<h4><%= link_to "Your Clients", clients_path %></h4>
-<h4><%= link_to "Edit Invoice Information", edit_invoice_path(@invoice) %></h4>
-<h4><%= link_to "Delete Invoice", @invoice, method: :delete,  data: { confirm: "Are you sure you want to delete this invoice?" }  %></h4>
 
-<h4><%= link_to "Back to All Invoices", invoices_path %></h4>
+<table class="table table-bordered table-hover">
+	<thead  class="table-active">
+		<tr>
+			<th>Invoice Details</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>Service</th>
+			<td><%= @invoice.service %></td>
+		</tr>
+		<tr>
+			<th>Rate</th>
+			<td><%= @invoice.rate %></td>
+		</tr>
+		<tr>
+			<th>Amount</th>
+			<td><%= @invoice.amount %></td>
+		</tr>
+		<tr>
+			<th>Total</th>
+			<td><%= @invoice.total %></td>
+		</tr>
+	</tbody>
+</table>
+
+	
+<%= link_to "Clients", clients_path, :class => "btn btn-primary btn-md" %>
+<%= link_to "Edit", edit_invoice_path(@invoice), :class => "btn btn-success btn-md" %>
+<%= link_to "Delete", @invoice, method: :delete,  data: { confirm: "Are you sure you want to delete this invoice?" }, :class => "btn btn-danger btn-md"%>
+<%= link_to "Back", invoices_path, :class => "btn btn-primary btn-md" %>
 <%end%>
 
