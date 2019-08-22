@@ -1,6 +1,6 @@
 module InvoicesHelper
 def last_modified(invoice)
-    invoice.updated_at.strftime("last modified %b %e, at %l:%M %p")
+    invoice.updated_at.strftime("%b %e, at %l:%M %p")
 end
 
 def who_client(invoice)

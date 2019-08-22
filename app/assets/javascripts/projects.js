@@ -8,12 +8,12 @@ function listenForClicksInProjects(){
 		$('button.js-proj').on('click', function(e){
 			let show = document.getElementById("invoices-show")
 			if (show && show.innerHTML === ''){
-				console.log("where show is zero")
 				let projectId = e.currentTarget.dataset.id
 				fetch(`http://localhost:3000/projects/${projectId}.json`)
 				.then(response => response.json())
 				.then(data => {
 					const invoiceArr = data.invoices;
+					invoiceArr.sort((a, b) => (a.service > b.service) ? 1 : -1)
 					if (invoiceArr.length > 0){
 					invoiceArr.forEach(function (invoice, index) {
 					const show2 = document.getElementById("invoices-show")
@@ -26,7 +26,6 @@ function listenForClicksInProjects(){
 
  					});
 			}else{
-				console.log("where show is NOT zero")
 					document.getElementById("invoices-show").innerHTML=''
 	}
 });
