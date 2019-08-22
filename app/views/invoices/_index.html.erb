@@ -1,8 +1,20 @@
 
-<ol>
-	<% @invoices.each do |i| %>
-	<h4 style="background-color:rgba(222, 225, 230, 0.5)"><li>
-		<%= link_to i.service, invoice_path(i) %> - (client: <%= who_client(i) %>)</h4> <h5> - <%= last_modified i %></h4>
-	</li>
-	<%end%>
-		</ol>
+<table class="table table-bordered table-hover">
+	<thead  class="table-active">
+		<tr>
+			<th>Service</th>
+			<th>Client</th>
+			<th>Last Modified</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @invoices.each do |i| %>
+		<tr>
+			<th style="text-decoration:none;"><%= link_to i.service, invoice_path(i) %></th>
+			<td><%= who_client(i) %></td>
+			<td><%= last_modified i %></td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>
+
