@@ -1,29 +1,31 @@
-<h1 style="text-align:center">Your Favorite Client Tracker!</h1>
 
-<%if user_signed_in? %>
-<h3><p style="text-align:center;"></h3></p><form action="<%=clients_path%>" method="get">
-	<button type="submit" class="btn btn-primary btn-block" value="Clients" >VIEW YOUR CLIENTS</button>
-</form>
-<br>
-<h3><p style="text-align:center;"></h3></p><form action="<%=projects_path%>" method="get">
-	<button type="submit" class="btn btn-primary btn-block" value="Log in">VIEW YOUR PROJECTS</button>
-</form>
-<br>
-<h3><p style="text-align:center;"></h3></p><form action="<%=invoices_path%>" method="get">
-	<button type="submit" class="btn btn-primary btn-block" value="Log in">VIEW YOUR INVOICES</button>
-</form>
-<%else%>
-<h3><p style="text-align:center;"></h3></p><form action="<%=new_user_registration_path %>" method="get">
-	<button type="submit" class="btn btn-primary btn-block" value="Sign up" >SIGN UP</button>
-</form>
-<br>
-<h3><p style="text-align:center;"></h3></p><form action="<%=new_user_session_path%>" method="get">
-	<button type="submit" class="btn btn-primary btn-block" value="Log in">LOG IN</button>
-</form>
-<%end%>
- 
+			<%if user_signed_in? %>
+				<h1 style="text-align:center">Welcome, <%= current_user.name %>!</h1>
+			<%else%>
+				<h1> Please sign up or log in! </h1>
+			<%end%>
 
-
+			<%if user_signed_in? %>
+			<h3><p style="text-align:center;"></h3></p><form action="<%=clients_path%>" method="get">
+				<button type="submit" class="btn btn-primary btn-block" value="Clients" >VIEW YOUR CLIENTS</button>
+			</form>
+			<br>
+			<h3><p style="text-align:center;"></h3></p><form action="<%=projects_path%>" method="get">
+				<button type="submit" class="btn btn-primary btn-block" value="Log in">VIEW YOUR PROJECTS</button>
+			</form>
+			<br>
+			<h3><p style="text-align:center;"></h3></p><form action="<%=invoices_path%>" method="get">
+				<button type="submit" class="btn btn-primary btn-block" value="Log in">VIEW YOUR INVOICES</button>
+			</form>
+			<%else%>
+			<h3><p style="text-align:center;"></h3></p><form action="<%=new_user_registration_path %>" method="get">
+				<button type="submit" class="btn btn-primary btn-block" value="Sign up" >SIGN UP</button>
+			</form>
+			<br>
+			<h3><p style="text-align:center;"></h3></p><form action="<%=new_user_session_path%>" method="get">
+				<button type="submit" class="btn btn-primary btn-block" value="Log in">LOG IN</button>
+			</form>
+			<%end%>
 
 
 
