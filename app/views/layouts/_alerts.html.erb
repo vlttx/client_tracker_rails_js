@@ -1,4 +1,7 @@
-<% if notice || alert %>
-<div class="alert alert-danger" role="alert"><h5 style="color: red"><p class="notice" text-align="center"><%= notice %></p>
- <p class="alert" text-align="center"><%= alert %></p></h3></div>
- <% end %>
+<div class="col-md-6">
+		<% if notice%>
+			<div class="alert alert-danger" role="alert"><h5 style="color: red"><p class="notice" text-align="center"><%= notice %></p></h5></div>
+ 		<% elsif alert%>
+			 <div class="alert alert-success" role="alert"><h5><p class="alert" text-align="center"><%= alert %></p></h5></div>
+		<% end %>
+</div>

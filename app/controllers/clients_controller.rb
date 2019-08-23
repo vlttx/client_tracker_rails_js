@@ -8,7 +8,7 @@ class ClientsController < ApplicationController
  			render :show
  		# renders show page when prompted by search
  		elsif params[:business_name]
- 		flash.now[:notice] = "Unfortunately, your search did not have any results"
+ 		flash.now[:notice] = "No results"
  		@clients = current_user.clients
  		respond_to do |format|
  			format.html {render :index}
