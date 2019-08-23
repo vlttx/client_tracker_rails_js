@@ -1,6 +1,5 @@
 $(document).ready(()=>{
 	
-	console.log('Here I am in clients')
 	listenForClick();
 	listenForNewClientFormClick();
 });
@@ -72,16 +71,13 @@ class Client {
 }
 
 function hideMe(){
-	console.log("hiding's here")
 	if (document.getElementById('client-show').innerHTML != ""){
-		console.log("full inner has fired")
 		$('button#hide.btn.btn-danger.btn-md').on('click', function(e){
 		e.preventDefault()
 		let clientView = document.getElementById('client-show');
 		clientView.innerHTML = ''
 	})
 }else{
-	console.log("else condition fired")
 	listenForClick();
 }
 }
@@ -94,6 +90,7 @@ function toggle(divId) {
 
 
 function projectData (data){
+	console.log("PROJECTS", data)
 	if (data.projects){
 	projectArr = [];
 	data.projects.forEach(function (project) {
@@ -101,7 +98,7 @@ function projectData (data){
 						});
 						return projectArr;
 } else {
-	return (`no projects at the moment`);
+	return (`No projects at the moment`);
 }
 };
 
