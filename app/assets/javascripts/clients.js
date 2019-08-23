@@ -6,7 +6,6 @@ $(document).ready(()=>{
 
 function listenForClick(){
 	let counter = 0;
-	console.log("listening for clicks is on")
 	if (counter===0){
 	$('button.js-more').on('click', function(e){
 		e.preventDefault();
@@ -21,13 +20,11 @@ function listenForClick(){
 			newForm.style.display = "none"
 			show.innerHTML = client.clientHTML();
 			$(this).attr("display", "inline-block")
-			console.log("hideMe is here")
 			hideMe();
 
 			}else{
 				show.innerHTML = client.clientHTML();
 				$(this).attr("display", "inline-block")
-				console.log("hideMe2 is here")
 				hideMe();
 			}
 
@@ -51,6 +48,7 @@ class Client {
 		this.website = obj.website
 		this.address = obj.address
 		this.email = obj.email
+		this.projects = obj.projects
 			}
 
 		static newClientForm() {
@@ -90,7 +88,6 @@ function toggle(divId) {
 
 
 function projectData (data){
-	console.log("PROJECTS", data)
 	if (data.projects){
 	projectArr = [];
 	data.projects.forEach(function (project) {
