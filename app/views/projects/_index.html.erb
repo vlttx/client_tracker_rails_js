@@ -1,9 +1,20 @@
-<div>
-<ol>
-	<% @projects.each do |p| %>
-	<h4><li>
-		<%= link_to p.description, project_path(p) %> for <%= p.client.business_name%>
-	</li></h4>
-	<%end%>
-</ol>
-</div>
+
+
+<table class="table table-bordered table-hover">
+	<thead  class="table-active">
+		<tr>
+			<th>Project</th>
+			<th>Client</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody class="table-default">
+		<% @projects.each do |p| %>
+		<tr>
+			<th><%= p.description %></th>
+			<td><%= p.client.business_name %></td>
+			<td class="text-center"><%= link_to "Open", project_path(p), :class => "btn btn-primary btn-md" %>&nbsp<%= link_to "Edit", edit_project_path(p), :class => "btn btn-success btn-md" %>&nbsp<%= link_to "Delete", p, method: :delete,  data: { confirm: "Are you sure you want to delete this project?" }, :class => "btn btn-danger btn-md"%></td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>
