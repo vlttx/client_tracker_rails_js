@@ -4,16 +4,17 @@
 		<div class="col-sm-6">
 	
 <div class="index" align="left" style="overflow: auto;">
+
+	
 <ol>		
 <%if @clients.count != 0%>
 
 
 <h2>Your Clients:</h2>
 <%= form_tag(clients_path, method: :get) do %>
-  <%= text_field_tag :business_name, params[:business_name], placeholder: "Search" %>
+  <%= text_field_tag :business_name, params[:business_name], placeholder: "Search"%>
   <%= submit_tag 'Search by Name', name: nil, id: 'sf' %>
 <% end %>
-
 <br>
 	
 <% @clients.each do |c| %>
