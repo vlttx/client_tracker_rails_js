@@ -3,6 +3,6 @@
 <%= render partial: 'layouts/errors', locals: {object: @project} if @project.errors.count != 0 %>
 	<label> Project description: </label><br>
 	<%= p.hidden_field :client_id %><br>
-	<%=  p.text_field :description %><br>
+	<%=  p.text_area :description %><br>
 	<%= p.submit %>
 <%end%>
