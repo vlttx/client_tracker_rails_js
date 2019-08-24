@@ -41,11 +41,13 @@ function listenForClicksInClientView(){
 			  .then(response => response.json())
 			  .then(data => {
 			  		const projectsArr = data.projects;
-			  		if (projectsArr.length > 0){
-			  			const allProjects = document.getElementById("projects_show")
+			  		let allProjects = document.getElementById("projects_show")
+			  		if (projectsArr.length > 0 && allProjects.innerHTML === ""){
 			  			projectsArr.forEach(function (project, index){
 			  				allProjects.innerHTML += `<tr><th>${index+1}</th><td><a href="http://localhost:3000/clients/${clientId}/projects/${project.id}">${project.description}</a></td></tr>`;
 			  			})
+			  		} else {
+			  			allProjects.innerHTML = ""
 			  		}
 			  })
 			  }
