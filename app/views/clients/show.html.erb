@@ -1,22 +1,36 @@
-<div class="container">
-	
-<h2><%=@client.business_name%></h2>
-<br>
-<div class="row">
-<div class="col-sm-6">
-	<div class="mapouter"><div class="gmap_canvas"><iframe width="399" height="271" id="gmap_canvas" src="https://maps.google.com/maps?q=<%=@client.address%>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Werbung: <a href="https://www.jetzt-drucken-lassen.de">jetzt-drucken-lassen.de</a></div><style>.mapouter{position:relative;text-align:right;height:271px;width:399px;}.gmap_canvas {overflow:hidden;background:none!important;height:271px;width:399px;}</style>
-	</div>
-</div>
-<div class="col-sm-6">
-<h4>Address: <a href="https://www.google.com/maps/place/<%=@client.address%>"><%=@client.address%></a></h4>
-<h4>Email: <a href = "mailto: <%=@client.email%>"><%=@client.email%></a></h4>
-<h4>Website: <a href="<%=@client.website%>"><%=@client.website%></a></h4>
-<h4>Projects: <%= link_to "All related projects", client_projects_path(@client)%></h4>
-<h4>Add a project: <%= link_to "+ New", new_client_project_path(@client) %></h4><br><br>
+	<div class="container">
+	<br>	
+	<h2><%=@client.business_name%></h2>
+	<br>
+		<div class="row" style="space-between">
+			<div class="col-md-6">
+				<div class="mapouter"><div class="gmap_canvas"><iframe width="100%" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=<%=@client.address%>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:auto;max-width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:auto;max-width:100%;}</style>
+				</div>
+				</div>
+			<div class="col-md-6">
+				<h4>Address: <%=@client.address%></h4>
+				<h4>Email: <a href = "mailto: <%=@client.email%>"><%=@client.email%></a></h4>
+				<h4>Website: <a href="<%=@client.website%>"><%=@client.website%></a></h4>
+				
+				<div style="display: inline"><h4><button class="btn btn-primary btn-md projects_view"  data-id="<%= @client.id %>">See projects</button>&nbsp<%= link_to "Add New Project", new_client_project_path(@client), :class => "btn btn-primary btn-md"%></h4></div>
+				<table class="table table-bordered table-hover">
+					<thead  class="table-active" id="table show" style="display: none;">
+						<tr>
+							<th>No.</th>
+							<th>Project</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody class="table-default" id="projects_show">
+						
+					</tbody>
+					</table>
+				<div style="display: inline"><h4> <%= link_to "Edit Client Information", edit_client_path(@client), :class => "btn btn-success btn-md"%></h4>
+				<h4><%= link_to "Delete Client Record", @client, method: :delete,  data: { confirm: "Are you sure you want to delete this client?" }, :class => "btn btn-danger btn-md"  %></h4></div>
+				<%= link_to "All related projects", client_projects_path(@client)%>
+			</div>
 
-
-
-<h4> <%= link_to "Edit Client Information", edit_client_path(@client), :class => "btn btn-success btn-md"%></h4>
-<h4><%= link_to "Delete Client Record", @client, method: :delete,  data: { confirm: "Are you sure you want to delete this client?" }, :class => "btn btn-danger btn-md"  %></h4>
 </div>
+
 </div>
+

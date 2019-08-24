@@ -41,6 +41,7 @@ function listenForClick(){
 }
 
 
+
 class Client {
 	constructor(obj) {
 		this.id = obj.id
