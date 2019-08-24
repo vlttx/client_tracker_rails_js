@@ -17,15 +17,15 @@
 
 
 table.table-bordered > thead > tr > th {
-  border:3px solid powderblue;
+  border:1px solid black;
 }
 
 table.table-bordered > tbody > tr > td {
-  border:1px solid powderblue;
+  border:1px solid black;
 }
 
 table.table-bordered > tbody > tr > th {
-  border:3px solid powderblue;
+  border:1px solid black;
 }
 
 .btn.btn-primary {
@@ -41,4 +41,9 @@ table.table-bordered > tbody > tr > th {
 .btn.btn-danger {
 	background-color: #F50248;
 	border: none;
+}
+
+.mapouter {
+	max-width: 100%;
+	height: auto;
 }
