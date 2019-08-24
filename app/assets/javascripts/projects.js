@@ -1,6 +1,7 @@
 $(document).ready(()=>{
 	console.log('Here I am in projects');
-	listenForClicksInProjects()
+	listenForClicksInProjects();
+	listenForClicksInClientView();
 });
 
 function listenForClicksInProjects(){
@@ -31,6 +32,26 @@ function listenForClicksInProjects(){
 });
 }
 
+function listenForClicksInClientView(){
+	$('button.btn.btn-primary.btn-md.projects_view').on('click', function(e){
+		// let show = document.getElementById("projects_show")
+		// 	if (show && show.innerHTML === ''){
+			  const clientId = e.currentTarget.dataset.id
+			  fetch(`http://localhost:3000/clients/${clientId}.json`)
+			  .then(response => response.json())
+			  .then(data => {
+			  		const projectsArr = data.projects;
+			  		if (projectsArr.length > 0){
+			  			const allProjects = document.getElementById("projects_show")
+			  			projectsArr.forEach(function (project, index){
+			  				allProjects.innerHTML += `<tr><th>${index+1}</th><td><a href="http://localhost:3000/clients/${clientId}/projects/${project.id}">${project.description}</a></td></tr>`;
+			  			})
+			  		}
+			  })
+			  }
+			);
+
+	}
 
 
 	// let counter = 0
