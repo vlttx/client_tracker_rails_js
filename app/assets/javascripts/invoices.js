@@ -5,7 +5,7 @@ $(document).ready(() => {
 
 function listenForInput() {
 	let typingTimer;
-	let doneTypingInterval = 2000;
+	let doneTypingInterval = 1500;
 
 	//on keyup, start the countdown
 	$('#invoice_amount').keyup(function() {
