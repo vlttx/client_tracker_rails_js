@@ -1,9 +1,10 @@
 
 <%if params[:project_id]%>
-<h3>Enter invoice details for project "<%=@project.description%>": </h3>
-<%= render 'form' %>
+	<h3>Project name: "<%=@project.description%>": </h3><br>
+	<h3>Create Invoice:</h3>
+		<%= render 'form' %>
 <%elsif !@invoice.project_id%>
-<h3 style="color:red"> You need to create a client and a project before you can add an invoice!</h3>
+	<h3 style="color:red"> You need to create a client and a project before you can add an invoice!</h3>
 <%else%>
-<%= render 'form' %>
+	<%= render 'form' %>
 <%end%>
