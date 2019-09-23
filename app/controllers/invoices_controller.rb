@@ -14,16 +14,15 @@ class InvoicesController < ApplicationController
  	end
 
 	def index
-
  		if params[:project_id]
  			@project = Project.find_by_id(params[:project_id].to_i)
  			@invoices = @project.invoices
-
+	
  		else
  		@invoices = current_user.invoices
  		respond_to do |format|
  			format.html {render :index}
- 			format.json {render json: @invoices.to_json}
+			 format.json {render json: @invoices.to_json}
  		end
     end
 	end
