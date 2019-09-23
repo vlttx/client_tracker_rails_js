@@ -2,12 +2,13 @@
 
 <%= form_for(@invoice) do |c| %>
 <%= render partial: 'layouts/errors', locals: {object: @invoice} if @invoice.errors.count != 0 %>
+<form>
 <div class="form-row align-items-center">
 	<label for="service"> Service: </label><br>
 	<%= c.hidden_field :project_id %>
 	<%= c.text_field :service %>
 	<label for="rate"> Rate: </label><br>
-	<%=  c.text_field :rate %><br>
+	<%=  c.number_field :rate, step: :any %><br>
 	<label for="amount"> Amount: </label><br>
 	<%=  c.number_field :amount %><br>
 	<label for="total"> Total: </label><br>
@@ -17,6 +18,7 @@
 	<%= c.submit %>
 <%end%>
 </div>
+</form>
 
 
 
