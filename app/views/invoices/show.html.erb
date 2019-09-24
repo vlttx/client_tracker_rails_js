@@ -1,72 +1,104 @@
 
 <%if @invoice.project %>
-<table class="table table-bordered table-hover">
-	<thead  class="table-active">
-		<tr>
-			<th>Invoice Details</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<th>Project</th>
-			<td><%=@invoice.project.description%></td>
-		</tr>
-		<tr>
-			<th>Service</th>
-			<td><%= @invoice.service %></td>
-		</tr>
-		<tr>
-			<th>Rate</th>
-			<td><%= @invoice.rate %></td>
-		</tr>
-		<tr>
-			<th>Amount</th>
-			<td><%= @invoice.amount %></td>
-		</tr>
-		<tr>
-			<th>Total</th>
-			<td><%= @invoice.total %></td>
-		</tr>
-	</tbody>
-</table>
 
-<%= link_to "Edit", edit_invoice_path(@invoice), :class => "btn btn-success btn-md"%>
-<%= link_to "Delete", @invoice, method: :delete, data: { confirm: "Are you sure you want to delete this invoice?"}, :class => "btn btn-danger btn-md"%>
-<%= link_to "Back to Project", project_path(@invoice.project), :class => "btn btn-primary btn-md" %>
+<div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <h1 style="font-size:35px;">INVOICE</h1>
+                            </td>
+                            
+                            <td>
+                                Invoice #: <%= @invoice.id %> <br>
+                                Created: <%= @invoice.created_at.to_date %><br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                Vendor:<br>
+                                <%= current_user.name %><br>
+                                <%= current_user.email %>
+                            </td>
+                            
+                            <td>
+                                Client: <br>
+                                <%= @client.business_name%><br>
+								<%= @client.website%><br>
+								<%= @client.email%><br>
+                                <%= @client.address%><br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="heading">
+                <td>
+                    Payment Method
+                </td>
+                
+                <td>
+                </td>
+            </tr>
+            
+            <tr class="details">
+                <td>
+                    Check
+                </td>
+                
+                <td>
+                </td>
+            </tr>
+            
+            <tr class="heading">
+                <td>
+                    Service
+                </td>
+                
+                <td>
+                    Total
+                </td>
+            </tr>
+            
+            <tr class="item">
+                <td>
+                    <%= @invoice.service %>
+                </td>
+                
+                <td>
+                    $<%= @invoice.total %>
+                </td>
+            </tr>
+            
+            <tr class="total">
+                <td></td>
+                
+                <td>
+                   Total: $<%= @invoice.total %>
+                </td>
+            </tr>
+        </table>
+    </div>
 
-<%else%>
-<div class="alert alert-danger" role="alert"><h3 style="color:red"> This invoice is not associated with any project. In order to add it to a project, please create a client and/or project first.</h3></div>
 
-<table class="table table-bordered table-hover">
-	<thead  class="table-active">
-		<tr>
-			<th>Invoice Details</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<th>Service</th>
-			<td><%= @invoice.service %></td>
-		</tr>
-		<tr>
-			<th>Rate</th>
-			<td><%= @invoice.rate %></td>
-		</tr>
-		<tr>
-			<th>Amount</th>
-			<td><%= @invoice.amount %></td>
-		</tr>
-		<tr>
-			<th>Total</th>
-			<td><%= @invoice.total %></td>
-		</tr>
-	</tbody>
-</table>
+<div class="buttons">
+		<%= link_to "Clients", clients_path, :class => "btn btn-primary btn-md" %>
+		<%= link_to "Edit", edit_invoice_path(@invoice), :class => "btn btn-success btn-md" %>
+		<%= link_to "Delete", @invoice, method: :delete,  data: { confirm: "Are you sure you want to delete this invoice?" }, :class => "btn btn-danger btn-md"%>
+		<%= link_to "Back", invoices_path, :class => "btn btn-primary btn-md" %>
+		<%end%>
+</div>
+
 
 	
-<%= link_to "Clients", clients_path, :class => "btn btn-primary btn-md" %>
-<%= link_to "Edit", edit_invoice_path(@invoice), :class => "btn btn-success btn-md" %>
-<%= link_to "Delete", @invoice, method: :delete,  data: { confirm: "Are you sure you want to delete this invoice?" }, :class => "btn btn-danger btn-md"%>
-<%= link_to "Back", invoices_path, :class => "btn btn-primary btn-md" %>
-<%end%>
 
