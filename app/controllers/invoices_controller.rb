@@ -30,6 +30,7 @@ class InvoicesController < ApplicationController
 
 	def show
 		set_invoice
+		@client = Client.find_by_id(@invoice.project.id)
 		respond_to do |format|
 			format.html {render:show}
 			format.json {render json: @invoice.to_json}
