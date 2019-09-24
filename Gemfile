@@ -16,6 +16,8 @@ gem 'active_model_serializers', '~> 0.10.0'
 # Use postgresql as the database for Active Record
 gem "remotipart", "~> 1.0"
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

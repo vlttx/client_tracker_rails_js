@@ -34,6 +34,16 @@ class InvoicesController < ApplicationController
 		respond_to do |format|
 			format.html {render:show}
 			format.json {render json: @invoice.to_json}
+			format.pdf do
+                render pdf: "Invoice No. #{@invoice.id}",
+                page_size: 'A4',
+                template: "invoices/show.html.erb",
+                layout: "pdf.html",
+                orientation: "Landscape",
+                lowquality: true,
+                zoom: 1,
+				dpi: 75
+			end
 		end
 	end
 
