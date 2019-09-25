@@ -1,0 +1,92 @@
+<div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <h1 style="font-size:35px;">INVOICE</h1>
+                            </td>
+                            
+                            <td>
+                                Invoice #: <%= @invoice.id %> <br>
+                                Created: <%= @invoice.created_at.to_date %><br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                Vendor:<br>
+                                <%= current_user.name %><br>
+                                <%= current_user.email %>
+                            </td>
+                            
+                            <td>
+                                Client: <br>
+                                <%= @client.business_name%><br>
+								<%= @client.website%><br>
+								<%= @client.email%><br>
+                                <%= @client.address%><br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <br>
+            <br>
+            <br>
+            <tr class="heading">
+                <td>
+                    Payment Method
+                </td>
+                
+                <td>
+                </td>
+            </tr>
+            
+            <tr class="details">
+                <td>
+                    Check
+                </td>
+                
+                <td>
+                </td>
+            </tr>
+            
+            <tr class="heading">
+                <td>
+                    Service
+                </td>
+                
+                <td>
+                    Total
+                </td>
+            </tr>
+            
+            <tr class="item">
+                <td>
+                    <%= @invoice.service %>
+                </td>
+                
+                <td>
+                    $<%= @invoice.total %>
+                </td>
+            </tr>
+            
+            <tr class="total">
+                <td></td>
+                
+                <td>
+                   Total: $<%= @invoice.total %>
+                </td>
+            </tr>
+        </table>
+    </div>
+<br>
+<br>
