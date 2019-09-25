@@ -37,9 +37,12 @@ class InvoicesController < ApplicationController
 			format.pdf do
                 render pdf: "Invoice No. #{@invoice.id}",
                 page_size: 'A4',
-                template: "invoices/show.html.erb",
+                template: "invoices/showpdf.html.erb",
                 layout: "layouts/pdf.html",
-                orientation: "Portrait",
+				orientation: "Portrait",
+				footer: {
+                left: Time.now
+               	},
 				lowquality: true,
                 zoom: 1.5,
 				dpi: 75
