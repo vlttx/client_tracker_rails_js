@@ -44,7 +44,7 @@ class InvoicesController < ApplicationController
                 left: Time.now
                	},
 				lowquality: true,
-                zoom: 1.5,
+                zoom: 1,
 				dpi: 75
 			end
 		end
