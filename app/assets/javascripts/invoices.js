@@ -1,6 +1,6 @@
 $(document).ready(() => {
-	console.log('Here I am in invoices');
 	listenForInput();
+	listenForPrint();
 });
 
 function listenForInput() {
@@ -22,4 +22,12 @@ function listenForInput() {
 		let total = document.getElementById('invoice_total');
 		total.value = invoiceRate * invoiceQuantity;
 	}
+}
+
+function listenForPrint() {
+	$('.download').on('click', function() {
+		console.log('f');
+		let noWay = document.getElementById('way');
+		noWay.innerHTML = '';
+	});
 }
