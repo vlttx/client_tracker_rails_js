@@ -2,9 +2,11 @@ class InvoicesController < ApplicationController
 	before_action :current_user
 
 		def new
+		
  		# check if nested and its a proper id
  		@project = Project.find_by_id(params[:project_id].to_i)
 		# if params[:project_id] && @project
+		@client = Client.find_by_id(@project.client_id)
  		@invoice = Invoice.new(project_id: params[:project_id].to_i)
  		@invoice
  		# @else
@@ -30,10 +32,11 @@ class InvoicesController < ApplicationController
 
 	def show
 		set_invoice
-		@client = Client.find_by_id(@invoice.project.id)
+		@project = Project.find_by_id(@invoice.project_id)
+		@client = Client.find_by_id(@project.client_id)
 		respond_to do |format|
 			format.html 
-			# format.json {render json: @invoice.to_json}
+			format.json {render json: @invoice.to_json}
 			format.pdf do
                 render pdf: "Invoice No. #{@invoice.id}",
                 page_size: 'A4',
@@ -56,6 +59,7 @@ class InvoicesController < ApplicationController
 	end
 
 	def create
+
 		@invoice = Invoice.new(invoice_params)
 		@invoice.user = current_user
 		if @invoice.save
@@ -85,7 +89,7 @@ class InvoicesController < ApplicationController
 	private
 
 	def invoice_params
-		params.require(:invoice).permit(:service, :rate, :amount, :total, :user_id, :project_id, :created_at)
+		params.require(:invoice).permit(:service, :rate, :amount, :total, :user_id, :project_id, :client_id, :created_at)
 	end
 
 	def set_invoice
@@ -94,11 +98,6 @@ class InvoicesController < ApplicationController
 			redirect_to invoices_path
 	end
 	end
-
-	# private
-	# def set_invoice
-	# @invoice = Invoice.find_by(id: params[:id])
-	# end
 
 
 end
