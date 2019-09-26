@@ -15,42 +15,7 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import 'bootstrap';
 @import "invoices";
+@import "tables";
 
 div.field_with_errors input [type="text"] {border: 1px solid red; }
 
-table.table-bordered > thead > tr > th {
-  border:1px solid black;
-}
-
-table.table-bordered > tbody > tr > td {
-  border:1px solid black;
-}
-
-table.table-bordered > tbody > tr > th {
-  border:1px solid black;
-}
-
-.btn.btn-primary {
-	background-color: #1556B4;
-	border: none;
-}
-
-.btn.btn-success {
-	background-color: #6A717B;
-	border: none;
-}
-
-.btn.btn-danger {
-	background-color: #F50248;
-	border: none;
-}
-
-.mapouter {
-	max-width: 100%;
-	height: auto;
-}
-
-.col-centered{
-float: none;
-margin: 0 auto;
-}
