@@ -83,7 +83,7 @@ class ClientsController < ApplicationController
 	private
 
 	def client_params
-		params.fetch(:client, {}).permit(:business_name, :address, :email, :website)
+		params.fetch(:client, {}).permit(:business_name, :address, :email, :website, project_ids: [])
 		# params.require(:client).permit(:business_name, :address, :email, :website)
 	end
 
