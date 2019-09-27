@@ -2,6 +2,7 @@
 <table class="table table-bordered table-hover">
 	<thead  class="table-active">
 		<tr>
+			<th>Invoice No.</th>
 			<th>Client</th>
 			<th>Service</th>
 			<th>Total</th>
@@ -13,6 +14,7 @@
 	<tbody class="table-default">
 		<% @invoices.each do |i| %>
 		<tr>
+			<td><%= invoice_number i %></td>
 			<td><%= who_client(i) %></td>
 			<th><%= i.service %></th>
 			<td>$<%= i.total %></td>
