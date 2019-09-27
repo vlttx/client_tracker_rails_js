@@ -3,6 +3,10 @@ module InvoicesHelper
 	    invoice.updated_at.strftime("%b %e, at %l:%M %p")
 	end
 
+	def invoice_number(invoice)
+	    @invoices.reverse.find_index { |inv| inv == invoice } + 1;
+	end
+
 	def created_date(invoice)
 		invoice.created_at.strftime("%b %e, %Y")
 	end
