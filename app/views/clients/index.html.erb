@@ -1,46 +1,44 @@
 
 
 	<div class="row">
+		<div class="col-sm-6">	
+			<div class="index" align="left" style="overflow: auto;">
+				<% if @clients.count != 0 %>
+					<br>
+					<h2>Your Clients:</h2>
+					  <%= form_tag(clients_path, method: :get) do %>
+					  <%= text_field_tag :business_name, params[:business_name], placeholder: "Search"%>
+					  <%= submit_tag 'Search by Name', name: nil, id: 'sf' %>
+					<% end %>
+					<br>
+					  <input class="form-control" id="search" type="text" placeholder="Search" aria-label="Search">
+					<br/>	
+						<ol id="xyz">
+							<% @clients.each do |c| %>
+								<h5><li id="name"><%=c.business_name%></li>
+								<form action="<%=client_path(c)%>" method="get" style="display:inline-block">
+									<button type="submit" class="btn btn-primary btn-md" value="Clients" style="display:inline-block">Client View Page</button>
+									<button class="js-more btn btn-success btn-md" data-id="<%= c.id %>">Quick Info</button></h5>
+								</form>	
+							<%end%>	
+							</ol>
+								
+						
+			</div>	
+		</div>
+
+
 		<div class="col-sm-6">
-	
-<div class="index" align="left" style="overflow: auto;">
+		<br>
+			<h4>To add full details of a new client click<br> 
+			<%=link_to "HERE", new_client_path, :class => "btn btn-primary btn-md"%> or <button class="js-new btn btn-success btn-md">Quick Add</button> </h4>
+		<%else %>
+			<h3 style="color:red">You currently have no clients. To add a new client click <%=link_to "HERE", new_client_path%>.</h3>
+		<%end%>
+			<h3><div id="new-client"  style="background-color:rgba(222, 225, 230, 0.5)"></div></h3>
+			<h3><div id="client-show" align="left"></div></h3>
 
-	
-<ol>		
-<%if @clients.count != 0%>
-<br>
-<h2>Your Clients:</h2>
-<%= form_tag(clients_path, method: :get) do %>
-  <%= text_field_tag :business_name, params[:business_name], placeholder: "Search"%>
-  <%= submit_tag 'Search by Name', name: nil, id: 'sf' %>
-<% end %>
-<br>
-<div class="active-cyan-3 active-cyan-4 mb-4">
-  <input class="form-control" id="search" type="text" placeholder="Search" aria-label="Search">
-</div>
-<br/>	
-<% @clients.each do |c| %>
-<h5><li><%=c.business_name%></li>
-<form action="<%=client_path(c)%>" method="get" style="display:inline-block">
-	<button type="submit" class="btn btn-primary btn-md" value="Clients" style="display:inline-block">Client View Page</button>
-</form>
-<button class="js-more btn btn-success btn-md" data-id="<%= c.id %>">Quick Info</button></h5>
-<%end%>	
-</ol>
-</div>
 
-	
-</div>
-<div class="col-sm-6">
-	<br>
-	<h4>To add full details of a new client click<br> 
-		<%=link_to "HERE", new_client_path, :class => "btn btn-primary btn-md"%> or <button class="js-new btn btn-success btn-md">Quick Add</button> </h4>
 
-<%else %>
-	<h3 style="color:red">You currently have no clients. To add a new client click <%=link_to "HERE", new_client_path%>.</h3>
-<%end%>
-	<h3><div id="new-client"  style="background-color:rgba(222, 225, 230, 0.5)"></div></h3>
-	<h3>
-		<div id="client-show" align="left"  style="background-color:rgba(222, 225, 230, 0.5)"></h3></div>
 	</div>
 
