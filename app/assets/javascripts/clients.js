@@ -171,10 +171,22 @@ function listenForSearch(){
 		}
 	});
 	function doneTyping() {
-			let j = $('#search').val()
-			fetch(`http://localhost:3000/clients.json`)
-				.then(response => response.json())
-				.then(data => console.log(data))
+			let input = $('#search').val().toLowerCase();
+			let clientelle = Array.from(document.getElementsByTagName('h5'));
+			let clientNames = [];
+
+			if (clientelle.length >=1 ){
+
+				for(let i = 0; i < clientelle.length; i++){
+				let name = clientelle[i].getElementsByTagName('li')[0].innerText
+					clientNames.push(name)
+					if (name.toLowerCase().indexOf(input) > -1 ){
+						clientelle[i].style.display = '';
+					} else {
+						clientelle[i].style.display = 'none';
+					}
+				}
+			}
 	}
 	}
 	
