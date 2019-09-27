@@ -1,29 +1,25 @@
 
 
 	<div class="row">
-		<div class="col-sm-6">	
-			<div class="index" align="left" style="overflow: auto;">
+		<div class="col-sm-6">
+				<div class="container">	
 				<% if @clients.count != 0 %>
 					<br>
-					<h2>Your Clients:</h2>
-					  <%= form_tag(clients_path, method: :get) do %>
-					  <%= text_field_tag :business_name, params[:business_name], placeholder: "Search"%>
-					  <%= submit_tag 'Search by Name', name: nil, id: 'sf' %>
-					<% end %>
-					<br>
-					  <input class="form-control" id="search" type="text" placeholder="Search" aria-label="Search">
-					<br/>	
-						<ol id="xyz">
+					<h3>Your Clients:</h3>
+					<form class="form-inline my-2 my-lg-0">	
+						<input class="form-control mr-sm-2" id="search" type="text" placeholder="Search" aria-label="Search">
+					</form><br/>
+					</div>
+						<div class="index" align="left" style="overflow: auto;">
+							<ol id="xyz">
 							<% @clients.each do |c| %>
 								<h5><li id="name"><%=c.business_name%></li>
 								<form action="<%=client_path(c)%>" method="get" style="display:inline-block">
 									<button type="submit" class="btn btn-primary btn-md" value="Clients" style="display:inline-block">Client View Page</button>
 									<button class="js-more btn btn-success btn-md" data-id="<%= c.id %>">Quick Info</button></h5>
 								</form>	
-							<%end%>	
-							</ol>
-								
-						
+							<% end %>	
+							</ol>			
 			</div>	
 		</div>
 
