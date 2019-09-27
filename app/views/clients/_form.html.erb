@@ -1,25 +1,25 @@
 <form>
-<div class="col-md-6">
-<%= form_for(@client) do |c| %>
-<%= render partial: 'layouts/errors', locals: {object: @client} if @client.errors.count != 0 %>
-<div class="form-group">	
-	<label> Client Name: </label><br>
-	<%=  c.text_field :business_name,  :placeholder=>"Required", :class => "form-control" %><br>
-</div>	
-<div class="form-group">
-	<label> Address: </label><br>
-	<%=  c.text_field :address, :placeholder=>"Enter address", :class => "form-control"  %><br>
-</div>
-<div class="form-group">
-	<label> Website: </label><br>
-	<%=  c.text_field :website, :placeholder=>"Enter website", :class => "form-control" %><br>
-</div>
-<div class="form-group">
-	<label> Email: </label><br>
-	<%=  c.email_field :email, :placeholder=>"Enter email", :class => "form-control"  %><br>
-</div>
-      <br>
-	<%= c.submit :class => "btn btn-primary" %>
-<%end%>
-</div>
+	<div class="col-md-6">
+		<%= form_for(@client) do |c| %>
+			<%= render partial: 'layouts/errors', locals: {object: @client} if @client.errors.count != 0 %>
+			<div class="form-group">	
+				<label> Client Name: </label><br>
+				<%=  c.text_field :business_name,  :placeholder=>"Required", :class => "form-control" %><br>
+			</div>	
+			<div class="form-group">
+				<label> Address: </label><br>
+				<%=  c.text_field :address, :placeholder=>"Enter address", :class => "form-control"  %><br>
+			</div>
+			<div class="form-group">
+				<label> Website: </label><br>
+				<%=  c.text_field :website, :placeholder=>"Enter website", :class => "form-control" %><br>
+			</div>
+			<div class="form-group">
+				<label> Email: </label><br>
+				<%=  c.email_field :email, :placeholder=>"Enter email", :class => "form-control"  %><br>
+			</div>
+			      <br>
+				<%= c.submit :class => "btn btn-primary" %>
+		<%end%>
+	</div>
 </form>

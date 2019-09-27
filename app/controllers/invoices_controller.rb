@@ -1,31 +1,24 @@
 class InvoicesController < ApplicationController
 	before_action :current_user
 
-		def new
-		
- 		# check if nested and its a proper id
+	def new	
  		@project = Project.find_by_id(params[:project_id].to_i)
-		# if params[:project_id] && @project
 		@client = Client.find_by_id(@project.client_id)
  		@invoice = Invoice.new(project_id: params[:project_id].to_i)
  		@invoice
- 		# @else
- 		# #unnested
- 		# @invoice = Invoice.new
- 		# @invoice.build_projectß
  	end
 
 	def index
  		if params[:project_id]
  			@project = Project.find_by_id(params[:project_id].to_i)
- 			@invoices = @project.invoices
+ 			@invoices = @project.invoices.order! 'created_at DESC'
 	
  		else
- 		@invoices = current_user.invoices
- 		respond_to do |format|
- 			format.html {render :index}
+	 		@invoices = current_user.invoices.order! 'created_at DESC'
+	 		respond_to do |format|
+ 			 format.html {render :index}
 			 format.json {render json: @invoices.to_json}
- 		end
+ 			end
     end
 	end
 

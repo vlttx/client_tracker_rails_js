@@ -1,18 +1,15 @@
 
 
-<br>
+	<br>
+	<% if params[:project_id] && @invoices.count != 0%>
+		<h2>Your Invoices for Project "<%=@project.description%>":</h2>
+			<%=render 'index'%><br>
+		<h4>To add a new invoice for this project, click <%=link_to "HERE", new_project_invoice_path(@project)%>. <br>
 
-
-<% if params[:project_id] && @invoices.count != 0%>
-	<h2>Your Invoices for Project "<%=@project.description%>":</h2>
+	<% elsif params[:project_id] && @invoices.count == 0 %>
+		<div class="alert alert-danger" role="alert"><h4 style="color:red">You currently have no invoices for this project. To add a new invoice for this project, click <%=link_to "HERE", new_project_invoice_path(@project)%>.</h4></div>
+	<% elsif !params[:project_id] && @invoices.count != 0 %>
 		<%=render 'index'%>
-<br>
-	<h4>To add a new invoice for this project, click <%=link_to "HERE", new_project_invoice_path(@project)%>. <br>
-
-<% elsif params[:project_id] && @invoices.count == 0 %>
-	<div class="alert alert-danger" role="alert"><h4 style="color:red">You currently have no invoices for this project. To add a new invoice for this project, click <%=link_to "HERE", new_project_invoice_path(@project)%>.</h4></div>
-<% elsif !params[:project_id] && @invoices.count != 0 %>
-<%=render 'index'%>
-<%else%>
-	<div class="alert alert-danger" role="alert"><h4 style="color:red">You currently have no invoices. To create a new invoice, you first need to create a new client and a project or add it to an existing project.</h4></div>
-<%end%>
+	<%else%>
+		<div class="alert alert-danger" role="alert"><h4 style="color:red">You currently have no invoices. To create a new invoice, you first need to create a new client and a project or add it to an existing project.</h4></div>
+	<%end%>

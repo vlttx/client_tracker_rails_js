@@ -15,9 +15,9 @@ class ProjectsController < ApplicationController
 	def index
 		if params[:client_id]
 			@client = Client.find_by_id(params[:client_id].to_i)
-			@projects = @client.projects
+			@projects = @client.projects.order! 'created_at DESC'
 		else
-		@projects = current_user.projects
+		@projects = current_user.projects.order! 'created_at DESC'
 		respond_to do |format|
  			format.html {render :index}
  			format.json {render json: @projects}

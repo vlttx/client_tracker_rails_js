@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
 	before_action :current_user
 	
 	def index
- 			@clients = current_user.clients
+ 			@clients = current_user.clients.order! 'created_at DESC'
  			respond_to do |format|
  			format.html {render :index}
  			format.json {render json: @clients}
@@ -26,19 +26,6 @@ class ClientsController < ApplicationController
 	def edit
 		set_client
 	end
-
-	# def create
-	# 	@client = Client.new(client_params)
-	# 	@client.user = current_user
-	# 	if @client.save
-	# 			redirect_to client_path(@client)
-	# 	elsif 
-	# 		@client.projects.build
-	# 		render :new
-	# 	else
-	# 		redirect_to new_client_path
-	# 	end
-	# end
 
 	def create
 		@client = current_user.clients.build(client_params)
@@ -69,7 +56,6 @@ class ClientsController < ApplicationController
 
 	def client_params
 		params.fetch(:client, {}).permit(:business_name, :address, :email, :website, project_ids: [])
-		# params.require(:client).permit(:business_name, :address, :email, :website)
 	end
 
 

@@ -20,18 +20,17 @@
 								</form>	
 							<% end %>	
 							</ol>			
-			</div>	
-		</div>
-
+						</div>	
+					</div>
 
 		<div class="col-sm-6">
-		<br>
+			<br>
 			<h4>To add full details of a new client click<br> 
 			<%=link_to "HERE", new_client_path, :class => "btn btn-primary btn-md"%> or <button class="js-new btn btn-success btn-md">Quick Add</button> </h4>
 		<%else %>
 			<h3 style="color:red">You currently have no clients. To add a new client click <%=link_to "HERE", new_client_path%>.</h3>
 		<%end%>
-			<h3><div id="new-client"  style="background-color:rgba(222, 225, 230, 0.5)"></div></h3>
+			<h3><div id="new-client"></div></h3>
 			<h3><div id="client-show" align="left"></div></h3>
 
 
