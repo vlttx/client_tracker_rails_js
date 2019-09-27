@@ -1,5 +1,4 @@
 $(document).ready(()=>{
-	console.log('Here I am in projects');
 	listenForClicksInProjects();
 	listenForClicksInClientView();
 });

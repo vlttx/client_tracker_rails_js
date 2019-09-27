@@ -1,0 +1,6 @@
+{
+	"ruby.codeCompletion": "rcodetools",
+	"ruby.format": "rubocop",
+	"ruby.intellisense": "rubyLocate",
+	"solargraph.autoformat": true
+}

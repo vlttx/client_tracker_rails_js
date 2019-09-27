@@ -15,9 +15,12 @@
   <%= submit_tag 'Search by Name', name: nil, id: 'sf' %>
 <% end %>
 <br>
-	
+<div class="active-cyan-3 active-cyan-4 mb-4">
+  <input class="form-control" id="search" type="text" placeholder="Search" aria-label="Search">
+</div>
+<br/>	
 <% @clients.each do |c| %>
-<h5 style="background-color:rgba(222, 225, 230, 0.5)"><li><%=c.business_name%></li>
+<h5><li><%=c.business_name%></li>
 <form action="<%=client_path(c)%>" method="get" style="display:inline-block">
 	<button type="submit" class="btn btn-primary btn-md" value="Clients" style="display:inline-block">Client View Page</button>
 </form>

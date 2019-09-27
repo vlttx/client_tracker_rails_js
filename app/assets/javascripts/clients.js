@@ -2,6 +2,7 @@ $(document).ready(()=>{
 	
 	listenForClick();
 	listenForNewClientFormClick();
+	listenForSearch()
 });
 
 function listenForClick(){
@@ -159,16 +160,29 @@ function listenForNewClientFormClick(){
 
 };
 
+function listenForSearch(){
+	let typingTimer;
+	let doneTypingInterval = 500;
+	console.log("listening")
+	$('#search').keyup(function() {
+		clearTimeout(typingTimer)
+		if ($('#search').val()) {
+			typingTimer = setTimeout(doneTyping, doneTypingInterval);
+		}
+	});
+	function doneTyping() {
+			let j = $('#search').val()
+			fetch(`http://localhost:3000/clients.json`)
+				.then(response => response.json())
+				.then(data => console.log(data))
+	}
+	}
+	
 
 
 
 
-
-
-
-
-
-
+		
 
 
 

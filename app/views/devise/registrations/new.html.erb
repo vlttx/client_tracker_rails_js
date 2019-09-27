@@ -1,51 +1,56 @@
+<form>
+  
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :name%><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :business_name %><br />
-    <%= f.text_field :business_name, autofocus: true, autocomplete: "business name" %>
+    <%= f.text_field :business_name, autofocus: true, autocomplete: "business name", :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :business_address %><br />
-    <%= f.text_field :business_address, autofocus: true, autocomplete: "business address" %>
+    <%= f.text_field :business_address, autofocus: true, autocomplete: "business address", :class => "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :business_id %><br />
-    <%= f.text_field :business_id, autofocus: true, autocomplete: "business number" %>
+  <div class="field form-group">
+    <%= f.label :business_id_number %><br />
+    <%= f.text_field :business_id, autofocus: true, autocomplete: "business number", :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="actions form-group">
+    <%= f.submit "Sign up", :class => "btn btn-primary" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</form>
 
 
