@@ -1,7 +1,6 @@
-
 .invoice-box {
 	max-width: 800px;
-	height: 100vh;
+	height: 80vh;
 	margin: auto;
 	padding: 30px;
 	background: white;
@@ -11,8 +10,6 @@
 	line-height: 24px;
 	font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
 	color: #555;
-
-	
 }
 
 .invoice-box table {
@@ -67,8 +64,7 @@
 	font-weight: bold;
 }
 
-
-.buttons {	
+.buttons {
 	padding-top: 20px;
 	text-align: center;
 	display: inherit;
