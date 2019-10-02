@@ -2,8 +2,6 @@ table {
 	background: white;
 }
 
-
-
 table.table-bordered > thead > tr > th {
   border:1px solid black;
 }
@@ -21,16 +19,30 @@ table.table-bordered > tbody > tr > th {
 .btn.btn-primary {
 	background-color: #1556B4;
 	border: none;
+	text-shadow: none;
+	color: white;
+}
+
+
+.btn.btn-primary {
+	background-color: #1556B4;
+	border: none;
+	text-shadow: none;
+	color: white;
 }
 
 .btn.btn-success {
 	background-color: #6A717B;
 	border: none;
+	text-shadow: none;
+	color: white;
 }
 
 .btn.btn-danger {
 	background-color: #F50248;
 	border: none;
+	text-shadow: none;
+	color: white;
 }
 
 .mapouter {
