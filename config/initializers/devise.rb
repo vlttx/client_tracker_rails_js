@@ -298,7 +298,6 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
     config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: 'email', info_fields: 'email, name'
-  #   , {
   # strategy_class: OmniAuth::Strategies::Facebook, 
   # provider_ignores_state: true}
 end
