@@ -76,5 +76,5 @@ test:
 production:
   <<: *default
   database: <%= ENV['POSTGRES_DB'] %>
-  username: client_tracker_rails
+  username: <%= ENV['POSTGRES_USERNAME'] %>
   password: <%= ENV['CLIENT_TRACKER_RAILS_DATABASE_PASSWORD'] %>
