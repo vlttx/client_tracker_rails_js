@@ -6,8 +6,8 @@ devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", registr
   resources :clients
   resources :projects
   resources :users
-  get ‘auth/facebook/callback’, to: ‘sessions#create’
-  get ‘auth/failure’, to: redirect(‘/’)
+  get ‘facebook/callback’, to: ‘sessions#create’
+  get ‘failure’, to: redirect(‘/’)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :projects do
     resources :clients
