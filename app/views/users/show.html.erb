@@ -1,20 +1,39 @@
-
+<div class="col-md-12">
 <h1>Your Profile Information: </h1>
 <hr>
-<h3> Name: <%=current_user.name %> </h3><br>
 
-<h3> Email: <%=current_user.email %> </h3><br>
-<h3> Business Name: <%=current_user.business_name %> </h3><br>
-<h3> Business Address: <%=current_user.business_address %> </h3><br>
-<h3> Business ID (EIN or alike): <%=current_user.business_id %> </h3>
+<table class="table table-hover">
+			<thead  class="table-active">	
+				<tbody class="table-default" >
+					<tr>
+					<td> Name: </td>
+					<td><%=current_user.name %> </td>
+					</tr>
+					<tr>
+					<td> Email: </td>
+					<td><%=current_user.email %> 
+					</td>
+					</tr>
+					<tr>
+					<td> Business Name: </td>
+					<td><%=current_user.business_name %> </td>
+					</tr>
+					<tr>
+					<td> Business Address: </td>
+					<td><%=current_user.business_address %> </td>
+					</tr>
+					<tr>
+					<td> Business ID (EIN or alike): </td>
+					<td><%=current_user.business_id %> </td>
+					</tr>
+				</tbody>
+			</thead>
+</table>
 <br>
 <h4> <%= link_to "Update", edit_user_registration_path(current_user), :class => "btn btn-success btn-md"%></h4>
 <h4><%= link_to "Delete Your Account", registration_path(current_user), method: :delete,  data: { confirm: "Are you sure you want to delete your account?" }, :class => "btn btn-danger btn-md"  %></h4>
 </div>
+</div>
 
-
-
-
-
-
-
+				
+		
