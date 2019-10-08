@@ -4,7 +4,7 @@ ClientTracker is a Rails-based web app with dynamic features added through JS an
 
 ## INSTALL AND USAGE INSTRUCTIONS 
 
-To use ClientTracker, fork and clone the repository. CD to the local repository files, run bundle install, and then run rails s from the terminal. In your web browser, navigate to the appropriate localhost, and sign up as usual or through Facebook.
+To use ClientTracker, fork and clone the repository. CD to the local repository files, run **bundle install**, and then run **rails s** from the terminal. In your web browser, navigate to the appropriate localhost, and sign up with your email or through Facebook.
 
 ## LINK TO MIT LICENSE 
 
