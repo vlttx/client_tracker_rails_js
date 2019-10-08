@@ -18,7 +18,10 @@ function listenForClicksInProjects() {
 						invoiceArr.forEach(function(invoice, index) {
 							const show2 = document.getElementById('invoices-show');
 							let iDate = invoice.created_at.slice(0, 10);
-							show2.innerHTML += `<p>Title: ${invoice.service}; Total: ${invoice.total}; Created: ${iDate}</p>`;
+							show2.innerHTML += `<tr><th>${index + 1}</th>
+							<td>${invoice.service}</td><td>${invoice.total}</td>
+							</tr>`;
+							// show2.innerHTML += `<p>Title: ${invoice.service}; Total: ${invoice.total}; Created: ${iDate}</p>`;
 						});
 					} else {
 						document.getElementById(
