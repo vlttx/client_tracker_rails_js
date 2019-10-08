@@ -45,15 +45,17 @@ function listenForClicksInClientView() {
 				.then(data => {
 					const projectsArr = data.projects;
 					let allProjects = document.getElementById('projects_show');
-					if (projectsArr.length > 0 && allProjects.innerHTML === '') {
+					if (allProjects.innerHTML === '' && projectsArr.length > 0 ) {
 						projectsArr.forEach(function(project, index) {
 							allProjects.innerHTML += `<tr><th>${index +
 								1}</th><td><a href="http://localhost:3000/clients/${clientId}/projects/${
 								project.id
 							}">${project.description}</a></td></tr>`;
 						});
+					} else if (allProjects.innerHTML !== '' && projectsArr.length > 0){
+						allProjects.innerHTML = '';
 					} else {
-						allProjects.innerHTML = 'There are no projects to show';
+						allProjects.innerHTML = 'No projects at the moment'
 					}
 				});
 		}
