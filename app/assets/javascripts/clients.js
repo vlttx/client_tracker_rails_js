@@ -10,7 +10,7 @@ function listenForClick() {
 		$('button.js-more').on('click touchstart', function(e) {
 			e.preventDefault();
 			let clientId = e.currentTarget.dataset.id;
-			fetch(`http://localhost:3000/clients/${clientId}.json`)
+			fetch(`https://blooming-sea-43662.herokuapp.com/clients/${clientId}.json`)
 				.then(response => response.json())
 				.then(data => {
 					const show = document.getElementById('client-show');
@@ -158,7 +158,6 @@ Client.prototype.clientHTML = function() {
 function listenForSearch() {
 	let typingTimer;
 	let doneTypingInterval = 500;
-	console.log('listening');
 	$('#search').keyup(function() {
 		clearTimeout(typingTimer);
 		if ($('#search').val()) {

@@ -9,7 +9,7 @@ function listenForClicksInProjects() {
 		let show = document.getElementById('invoices-show');
 		if (show && show.innerHTML === '') {
 			let projectId = e.currentTarget.dataset.id;
-			fetch(`http://localhost:3000/projects/${projectId}.json`)
+			fetch(`https://blooming-sea-43662.herokuapp.com/projects/${projectId}.json`)
 				.then(response => response.json())
 				.then(data => {
 					const invoiceArr = data.invoices;
@@ -40,7 +40,7 @@ function listenForClicksInClientView() {
 		'click touchstart',
 		function(e) {
 			const clientId = e.currentTarget.dataset.id;
-			fetch(`http://localhost:3000/clients/${clientId}.json`)
+			fetch(`https://blooming-sea-43662.herokuapp.com/clients/${clientId}.json`)
 				.then(response => response.json())
 				.then(data => {
 					const projectsArr = data.projects;
@@ -48,7 +48,7 @@ function listenForClicksInClientView() {
 					if (allProjects.innerHTML === '' && projectsArr.length > 0 ) {
 						projectsArr.forEach(function(project, index) {
 							allProjects.innerHTML += `<tr><th>${index +
-								1}</th><td><a href="http://localhost:3000/clients/${clientId}/projects/${
+								1}</th><td><a href="https://blooming-sea-43662.herokuapp.com/${clientId}/projects/${
 								project.id
 							}">${project.description}</a></td></tr>`;
 						});
