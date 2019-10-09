@@ -120,30 +120,8 @@ function listenForNewClientFormClick() {
 
 
 Client.prototype.clientHTML = function() {
-	if (projectData(this).length > 0){
-			return `
-				<div class="client-show" style="display:inline-block">
-			 	<p><h4><strong>Client information:</strong></p></h4>
-			 	<p><h5><strong>Business name: </strong>${this.business_name}</h5></p>
-			 	<p><h5><strong>Website: </strong>${this.website}</h5></p>
-				<p><h5><strong>Email: </strong>${this.email}</h5></p></p>
-				<p><h5><strong>Projects: ${projectData(this)}</h5></strong></p>
-				<p><h5><strong>Address: ${this.address}<h5></strong></p>
-				<div class="mapouter">
-				<div class="gmap_canvas">
-				<iframe width="399" height="271" id="gmap_canvas" src="https://maps.google.com/maps?q=${
-					this.address
-				}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Werbung: <a href="https://www.jetzt-drucken-lassen.de">jetzt-drucken-lassen.de</a></div><style>.mapouter{position:relative;text-align:right;height:271px;width:399px;}.gmap_canvas {overflow:hidden;background:none!important;height:271px;width:399px;}</style>
-				</div>
-				</div>
-				<br>
-				<button id="hide" class="btn btn-danger btn-md">CLOSE</button>
-				</div>
-				`
-} else {
 	return `
 				<div class="client-show">
-			 	<p><h4 align=center><strong>Successfully added new client!</strong></p></h4><br>
 			 	<table class="table table-hover">
 				<thead  class="table-active">	
 				<tbody class="table-default" >
@@ -157,24 +135,23 @@ Client.prototype.clientHTML = function() {
 				<td>Email: </td><td>${this.email}</td>
 				</tr>
 				<tr>
-				<td>Projects: </td><td>No projects at the moment</td>
+				<td>Projects: </td><td>${projectData(this)}</td>
 				</tr>
 				<tr>
 				<td>Address: </td><td>${this.address}</td>
 				</tr>
 				</tbody>
 			</thead>
-</table>
-
+			</table>
+				<div align=center>
 				<div class="mapouter">
 				<div class="gmap_canvas">
 				<iframe width="399" height="271" id="gmap_canvas" src="https://maps.google.com/maps?q=${
 					this.address
 				}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>Werbung: <a href="https://www.jetzt-drucken-lassen.de">jetzt-drucken-lassen.de</a></div><style>.mapouter{position:relative;text-align:right;height:271px;width:399px;}.gmap_canvas {overflow:hidden;background:none!important;height:271px;width:399px;}</style>
 				</div>
+				</div>
 				</div>`
-
-}
 }
 
 
