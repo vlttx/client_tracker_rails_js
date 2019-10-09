@@ -48,9 +48,7 @@ function listenForClicksInClientView() {
 					if (allProjects.innerHTML === '' && projectsArr.length > 0 ) {
 						projectsArr.forEach(function(project, index) {
 							allProjects.innerHTML += `<tr><th>${index +
-								1}</th><td><a href="https://blooming-sea-43662.herokuapp.com/${clientId}/projects/${
-								project.id
-							}">${project.description}</a></td></tr>`;
+								1}</th><td><a href="https://blooming-sea-43662.herokuapp.com/projects/${project.id}">${project.description}</a></td></tr>`;
 						});
 					} else if (allProjects.innerHTML !== '' && projectsArr.length > 0){
 						allProjects.innerHTML = '';
