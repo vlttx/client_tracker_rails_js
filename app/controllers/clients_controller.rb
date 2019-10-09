@@ -31,9 +31,6 @@ class ClientsController < ApplicationController
 		@client = current_user.clients.build(client_params)
 		if @client.save
 			render json: @client
-		# 	respond_to do |format|
-		# 	format.json {render json: @client}
-		# end
 		else
 			redirect_to new_client_path
 		end
