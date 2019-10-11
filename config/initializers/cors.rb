@@ -1,8 +1,8 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://blooming-sea-43662.herokuapp.com'
+    origins 'https://clienttracker123.herokuapp.com'
 
-    resource 'https://blooming-sea-43662.herokuapp.com',
+    resource 'https://clienttracker123.herokuapp.com',
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
