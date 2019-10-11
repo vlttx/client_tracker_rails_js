@@ -3,7 +3,6 @@
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<form>
   <div class="form-group">
   <div class="field">
     <%= f.label :email %><br />
@@ -29,7 +28,6 @@
     <%= f.submit "Log in", class:"btn btn-primary" %>
   </div>
 <% end %>
-</form>
 
 <br>
 <%= render "devise/shared/links" %>
