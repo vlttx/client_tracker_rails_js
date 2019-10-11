@@ -9,7 +9,7 @@ function listenForClicksInProjects() {
 		let show = document.getElementById('invoices-show');
 		if (show && show.innerHTML === '') {
 			let projectId = e.currentTarget.dataset.id;
-			fetch(`https://blooming-sea-43662.herokuapp.com/projects/${projectId}.json`)
+			fetch(`https://clienttracker123.herokuapp.com/projects/${projectId}.json`)
 				.then(response => response.json())
 				.then(data => {
 					const invoiceArr = data.invoices;
@@ -21,7 +21,6 @@ function listenForClicksInProjects() {
 							show2.innerHTML += `<tr><th>${index + 1}</th>
 							<td>${invoice.service}</td><td>${invoice.total}</td>
 							</tr>`;
-							// show2.innerHTML += `<p>Title: ${invoice.service}; Total: ${invoice.total}; Created: ${iDate}</p>`;
 						});
 					} else {
 						document.getElementById(
@@ -40,7 +39,7 @@ function listenForClicksInClientView() {
 		'click touchstart',
 		function(e) {
 			const clientId = e.currentTarget.dataset.id;
-			fetch(`https://blooming-sea-43662.herokuapp.com/clients/${clientId}.json`)
+			fetch(`https://clienttracker123.herokuapp.com/clients/${clientId}.json`)
 				.then(response => response.json())
 				.then(data => {
 					const projectsArr = data.projects;
@@ -48,7 +47,7 @@ function listenForClicksInClientView() {
 					if (allProjects.innerHTML === '' && projectsArr.length > 0 ) {
 						projectsArr.forEach(function(project, index) {
 							allProjects.innerHTML += `<tr><th>${index +
-								1}</th><td><a href="https://blooming-sea-43662.herokuapp.com/projects/${project.id}">${project.description}</a></td></tr>`;
+								1}</th><td><a href="https://clienttracker123.herokuapp.com/projects/${project.id}">${project.description}</a></td></tr>`;
 						});
 					} else if (allProjects.innerHTML !== '' && projectsArr.length > 0){
 						allProjects.innerHTML = '';

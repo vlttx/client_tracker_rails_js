@@ -10,7 +10,7 @@ function listenForClick() {
 		$('button.js-more').on('click touchstart', function(e) {
 			e.preventDefault();
 			let clientId = e.currentTarget.dataset.id;
-			fetch(`https://blooming-sea-43662.herokuapp.com/clients/${clientId}.json`)
+			fetch(`https://clienttracker123.herokuapp.com/clients/${clientId}.json`)
 				.then(response => response.json())
 				.then(data => {
 					const show = document.getElementById('client-show');
