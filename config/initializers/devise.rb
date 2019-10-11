@@ -300,4 +300,5 @@ Devise.setup do |config|
     config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: 'email', info_fields: 'email, name'
   # strategy_class: OmniAuth::Strategies::Facebook, 
   # provider_ignores_state: true}
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], scope: 'email', info: 'email, name'
 end
