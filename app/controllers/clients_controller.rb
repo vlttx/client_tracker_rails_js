@@ -35,7 +35,7 @@ class ClientsController < ApplicationController
 			# format.html {render:show}
 			# format.json {render json: @client}
 			render :show
-			end
+			# end
 		else
 			redirect_to new_client_path
 		end
