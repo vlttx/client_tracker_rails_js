@@ -1,7 +1,7 @@
-<form>
-	<div class="col-md-6">
+<div class="col-md-6">
 		<%= form_for(@client) do |c| %>
 			<%= render partial: 'layouts/errors', locals: {object: @client} if @client.errors.count != 0 %>
+		
 			<div class="form-group">	
 				<label> Client Name: </label><br>
 				<%=  c.text_field :business_name,  :placeholder=>"Required", :class => "form-control" %><br>
@@ -22,4 +22,3 @@
 				<%= c.submit :class => "btn btn-primary" %>
 		<%end%>
 	</div>
-</form>
