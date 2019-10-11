@@ -1,4 +1,4 @@
-<form>
+
 	<div class="col-md-6">
 		<%= form_for(@client) do |c| %>
 			<%= render partial: 'layouts/errors', locals: {object: @client} if @client.errors.count != 0 %>
@@ -22,4 +22,3 @@
 				<%= c.submit :class => "btn btn-primary" %>
 		<%end%>
 	</div>
-</form>
