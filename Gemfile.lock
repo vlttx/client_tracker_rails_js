@@ -177,6 +177,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.10-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-linux)
+      racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
       jwt (>= 1.0, < 3.0)
@@ -206,7 +208,7 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.5)
-    rack-cors (1.1.0)
+    rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-protection (3.0.5)
       rack
@@ -315,6 +317,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
@@ -336,7 +339,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   pg (>= 0.18, < 2.0)
   puma (~> 4.3)
-  rack-cors (= 1.1.0)
+  rack-cors (= 1.1.1)
   rails (~> 7.0.4)
   remotipart (~> 1.0)
   sass-rails (~> 5.0)
