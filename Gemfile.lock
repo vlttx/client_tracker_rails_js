@@ -177,6 +177,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.10-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-linux)
+      racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
       jwt (>= 1.0, < 3.0)
@@ -205,7 +207,7 @@ GEM
     puma (4.3.12)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.5)
+    rack (2.2.6.4)
     rack-cors (1.1.0)
       rack (>= 2.0.0)
     rack-protection (3.0.5)
@@ -315,6 +317,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
